@@ -11,7 +11,7 @@ class StoryDashboard extends React.Component {
   render() {
     return (
       <div className="story-dashboard">
-        <h1>HelloWorld</h1>
+        <h1>Saved Stories</h1>
       </div>
     );
   }

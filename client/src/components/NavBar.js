@@ -1,29 +1,40 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import StoryDashboard from './containers/StoryDashboard';
+import { Link } from 'react-router-dom';
 
-const NavBar = () => {
-  return (
-    <div style={{ padding: 20 }}>
-      <Grid container className="navbar" justify='center'>
-        <Grid item>
-          <Button variant="contained" color="primary">
-            My Stories
-          </Button>
+class NavBar extends React.Component {
+  render() {
+    return (
+      <div style={{ padding: 20 }}>
+        <Grid container className="navbar" justify='center'>
+          <Grid item>
+            <Link to='/stories'>
+              <Button variant="contained" color="primary">
+                My Stories
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to='/locations'>
+              <Button variant="contained" color="primary">
+                Locations
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link to='/categories'>
+              <Button variant="contained" color="primary">
+                Categories
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Button variant="contained" color="primary">
-            Locations
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button variant="contained" color="primary">
-            Categories
-          </Button>
-        </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default NavBar;

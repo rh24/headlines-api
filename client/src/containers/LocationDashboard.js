@@ -19,3 +19,17 @@ this.state = {
   ],
 }
 */
+
+import React from 'react';
+
+class Location extends React.Component {
+  render() {
+    return (
+      <div className="location-dashboard">
+        <h1>Top Headlines by Location</h1>
+      </div>
+    )
+  }
+}
+
+export default Location;

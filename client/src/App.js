@@ -4,6 +4,8 @@ import './App.css';
 import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import StoryDashboard from './containers/StoryDashboard';
+import LocationDashboard from './containers/LocationDashboard';
+import CategoryDashboard from './containers/CategoryDashboard';
 
 class App extends Component {
   render() {
@@ -12,6 +14,8 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Route path='/stories' component={StoryDashboard} />
+          <Route path='/locations' component={LocationDashboard} />
+          <Route path='/categories' component={CategoryDashboard} />
         </div>
       </Router>
     );
