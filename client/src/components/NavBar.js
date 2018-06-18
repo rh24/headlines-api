@@ -9,7 +9,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div style={{ padding: 20 }}>
-        <Grid container className="navbar" justify='center'>
+        <Grid container className="navbar" justify='center' spacing={8}>
           <Grid item>
             <Link to='/stories'>
               <Button variant="contained" color="primary">
