@@ -2,10 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchStories } from '../actions/stories';
+import StoryCard from '../components/StoryCard';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      stories: []
+    }
   }
 
   // handleClick = (event) => {
@@ -16,13 +21,16 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.fetchStories();
+    // debugger;
   }
 
   render() {
+    const storyCards = this.props.stories.map((story, idx) => <StoryCard story={story} />)
     return (
       <div className="homepage">
         <h1>This is my Homepage.</h1>
         <h4>Insert fetched stories from NewsAPI in grid card layout</h4>
+        {storyCards}
       </div>
     )
   }
@@ -30,6 +38,7 @@ class Home extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   // bindActionCreators({fetchStories: fetchStories, dispatch});
+  // why don't we need this?
 }
 
 function mapStateToProps(state) {
