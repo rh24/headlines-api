@@ -12,11 +12,22 @@ import Typography from '@material-ui/core/Typography';
 
 const StoryCard = (props) => {
   return (
-    <Grid container className="story-cards" spacing={8}>
-      <Grid item xs={12}>
-        <Card>
-          {props.story.urlToImage}
-          {props.story.title}
+    <Grid container className="story-grid" spacing={8}>
+      <Grid item xs>
+        <Card className="story-card">
+          <CardMedia
+          className="story-card-media"
+          image={props.story.urlToImage}>
+            <img src={props.story.urlToImage} />
+          </CardMedia>
+          <CardContent>
+            <Typography gutterBottom variant="headline" component="h2">
+              {props.story.title}
+            </Typography>
+            <Typography component="p">
+              {props.story.description}
+            </Typography>
+          </CardContent>
         </Card>
       </Grid>
     </Grid>

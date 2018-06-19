@@ -25,7 +25,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const storyCards = this.props.stories.map((story, idx) => <StoryCard story={story} />)
+    const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />)
     return (
       <div className="homepage">
         <h1>This is my Homepage.</h1>
