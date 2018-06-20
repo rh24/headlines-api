@@ -22,14 +22,32 @@ this.state = {
 
 import React from 'react';
 
-class Location extends React.Component {
+class KeyWord extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: '',
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      text: event.target.value,
+    })
+  }
+
   render() {
     return (
       <div className="location-dashboard">
         <h1>Top Headlines by Location</h1>
+        <label>Enter search term: </label>
+        <input
+        placeholder="Keyword..."
+        onChange={(event) => this.handleChange(event)} />
       </div>
     )
   }
 }
 
-export default Location;
+export default KeyWord;

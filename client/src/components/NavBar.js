@@ -17,9 +17,9 @@ const NavBar = () => {
           </Link>
         </Grid>
         <Grid item>
-          <Link to='/locations'>
+          <Link to='/search'>
             <Button variant="contained" color="primary">
-              Locations
+              Search
             </Button>
           </Link>
         </Grid>

@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import StoryDashboard from './containers/StoryDashboard';
-import LocationDashboard from './containers/LocationDashboard';
+import KeywordDashboard from './containers/KeywordDashboard';
 import CategoryDashboard from './containers/CategoryDashboard';
 import Home from './containers/Home';
 
@@ -18,7 +18,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/stories' component={StoryDashboard} />
-            <Route path='/locations' component={LocationDashboard} />
+            <Route path='/search' component={KeywordDashboard} />
             <Route path='/categories' component={CategoryDashboard} />
           </Switch>
         </div>
