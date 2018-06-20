@@ -12,7 +12,7 @@ class KeywordDashboard extends React.Component {
 
     this.state = {
       text: '',
-      stories: []
+      searchedStories: []
     }
   }
 
@@ -25,17 +25,22 @@ class KeywordDashboard extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.fetchByKeyword(this.state.text);
+    this.setState({
+      text: '',
+      // searchedStories: [],
+    })
   }
 
   render() {
-    const stories = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
-    const renderStories = (stories) => {
-      if (!!stories) {
-        return <h1>Results:</h1>
-      } else {
-        return <h1>No results found.</h1>
-      }
-    }
+    // debugger;
+    // const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
+    // const renderStories = (stories) => {
+    //   if (!!stories) {
+    //     return <h1>Results:</h1>
+    //   } else {
+    //     return <h1>No results found.</h1>
+    //   }
+    // }
     return (
       <div className="location-dashboard">
         <h1>Search Top Headlines</h1>
@@ -47,9 +52,8 @@ class KeywordDashboard extends React.Component {
           <input
             type="submit" />
         </form><br />
-        {renderStories}
         <Grid container spacing={8}>
-          {stories}
+          {this.props.searchedStories}
         </Grid>
       </div>
     )
@@ -61,7 +65,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {text: state.text, stories: state.stories}
+  // debugger;
+  return {text: state.text, searchedStories: state.storiesReducer.searchedStories}
 }
 
 export default connect(mapStateToProps, {fetchByKeyword})(KeywordDashboard);

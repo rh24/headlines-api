@@ -7,7 +7,7 @@ export function fetchStories() {
       .then(resp => resp.json())
       .then(json => json.articles)
       .then((stories) => {
-        dispatch({ type: 'FETCH_STORIES', stories });
+        dispatch({ type: 'FETCH_STORIES', stories: stories });
       })
   }
 }
