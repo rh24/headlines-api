@@ -61,8 +61,8 @@ class KeywordDashboard extends React.Component {
           <input
             type="submit" />
         </form><br />
+        {heading}<br />
         <Grid container spacing={8}>
-          {heading}<br />
           {stories}
         </Grid>
       </div>
