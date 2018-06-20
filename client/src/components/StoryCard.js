@@ -39,7 +39,9 @@ class StoryCard extends Component {
   }
 
   render() {
+    // debugger;
     // const { classes } = this.props;
+    const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
     return (
       <Grid item>
         <Card
@@ -47,17 +49,17 @@ class StoryCard extends Component {
         onClick={() => this.handleClick()}>
           <CardMedia
           style={styles.media}
-          image={this.props.story.urlToImage}>
-            <img src={this.props.story.urlToImage} />
+          image={urlToImage}>
+            <img src={urlToImage} />
           </CardMedia>
           <div style={styles.contentBackground}>
             <CardContent
             style={styles.contentBackground}>
               <Typography gutterBottom variant="headline" component="h2">
-                {this.props.story.title}
+                {title}
               </Typography>
               <Typography component="p">
-                {this.props.story.description}
+                {description}
               </Typography>
             </CardContent>
           </div>
