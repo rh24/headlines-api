@@ -12,48 +12,64 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
 const styles = {
+  contentBackground: {
+    color: 'white',
+  },
   card: {
-    maxWidth: 345,
+    height: 400,
+    width: 400,
     display: 'block'
   },
   media: {
-    height: 0,
-    paddingTop: '56.25%',
-  },
-  contentBackground: {
-    color: 'white',
+    height: 200,
+    width: 200,
   },
   link: {
 
   }
 };
 
-const StoryCard = (props) => {
-  const { classes } = props;
-  // debugger;
+class StoryCard extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <Grid item>
-      <Card
-      style={styles.card}
-      onClick={() => props.handleClick}>
-        <CardMedia
-        style={styles.media}
-        image={props.story.urlToImage}>
-          <img src={props.story.urlToImage} />
-        </CardMedia>
-        <CardContent
-        style={styles.contentBackground}>
-          <Typography gutterBottom variant="headline" component="h2">
-            {props.story.title}
-          </Typography>
-          <Typography component="p">
-            {props.story.description}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-  )
+  handleClick = () => {
+    openInNewTab(this.props.story.url)
+  }
+
+  render() {
+    // const { classes } = this.props;
+    return (
+      <Grid item>
+        <Card
+        style={styles.card}
+        onClick={() => this.handleClick()}>
+          <CardMedia
+          style={styles.media}
+          image={this.props.story.urlToImage}>
+            <img src={this.props.story.urlToImage} />
+          </CardMedia>
+          <div style={styles.contentBackground}>
+            <CardContent
+            style={styles.contentBackground}>
+              <Typography gutterBottom variant="headline" component="h2">
+                {this.props.story.title}
+              </Typography>
+              <Typography component="p">
+                {this.props.story.description}
+              </Typography>
+            </CardContent>
+          </div>
+        </Card>
+      </Grid>
+    );
+  }
+}
+
+function openInNewTab(url) {
+  let win = window.open(url, '_blank');
+  win.focus();
 }
 
 // StoryCard.propTypes = {

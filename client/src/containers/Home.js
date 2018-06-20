@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchStories } from '../actions/stories';
 import StoryCard from '../components/StoryCard';
 import Grid from '@material-ui/core/Grid';
+import HoverCard from '../components/HoverCard';
 
 class Home extends React.Component {
   constructor(props) {
@@ -14,20 +15,13 @@ class Home extends React.Component {
     }
   }
 
-  handleClick() {
-    // event.preventDefault();
-    console.log('hi')
-    // debugger;
-    openInNewTab(this.props.story.url)
-  }
-
   componentDidMount() {
     this.props.fetchStories();
-    // debugger;
   }
 
   render() {
-    const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} handleClick={this.handleClick.bind(this)} />)
+    const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
+
     return (
       <div className="homepage">
         <h1>This is my Homepage.</h1>
@@ -39,11 +33,6 @@ class Home extends React.Component {
     )
   }
 };
-
-function openInNewTab(url) {
-  let win = window.open(url, '_blank');
-  win.focus();
-}
 
 function mapDispatchToProps(dispatch) {
   // bindActionCreators({fetchStories: fetchStories, dispatch});
