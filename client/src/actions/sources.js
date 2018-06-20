@@ -4,7 +4,7 @@ export function fetchSources() {
       .then(resp => resp.json())
       .then(json => json.sources)
       .then(sources => {
-        dispatch({ type: 'FETCH_SOURCES', sources })
+        dispatch({ type: 'FETCH_SOURCES', sources: sources })
       })
   }
 }
