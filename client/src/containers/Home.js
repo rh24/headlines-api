@@ -24,7 +24,7 @@ class Home extends React.Component {
 
     return (
       <div className="homepage">
-        <h1>This is my Homepage.</h1>
+        <h1>U.S. Top Headlines</h1>
         <h4>Insert fetched stories from NewsAPI in grid card layout</h4>
         <Grid container className="story-grid" spacing={8}>
           {storyCards}

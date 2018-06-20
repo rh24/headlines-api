@@ -27,26 +27,33 @@ class KeywordDashboard extends React.Component {
     event.preventDefault();
     if (this.refs.searchTerm.value !== '') {
       this.props.fetchByKeyword(this.state.text);
-      this.setState({
-        text: '',
-        searchedStories: [],
-        searchComplete: true
-      })
     } else {
       alert('please enter a valid keyword search.');
     }
+    this.setState({
+      text: '',
+      searchedStories: [],
+    })
   }
 
-  render() {
-    // debugger;
-    const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
-    let heading;
+  // componentDidUpdate(prevProps, prevState) {
+  //   this.setState({
+  //     text: '',
+  //     searchedStories: [],
+  //     searchComplete: true
+  //   })
+  // }
 
-    if (stories.length != 0) {
-      heading = <h1>Results:</h1>;
-    } else if (stories.length === 0 && this.props.searchComplete === true) {
-      heading = <h1>No results found.</h1>;
-    } // how to get this working?
+  render() {
+    const { text, searchedStories, searchComplete } = this.props;
+    const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
+    let keyword = this.props.text;
+
+    // if (stories.length != 0) {
+    //   heading = Results;
+    // } else if (stories.length === 0 && this.props.searchComplete === true) {
+    //   heading = <h1>No results found.</h1>;
+    // } // how to get this working?
 
     return (
       <div className="location-dashboard">
@@ -61,7 +68,7 @@ class KeywordDashboard extends React.Component {
           <input
             type="submit" />
         </form><br />
-        {heading}<br />
+        <h1>{stories.length !== 0 ? `Results for ${keyword}:` : 'No results found'}</h1><br />
         <Grid container spacing={8}>
           {stories}
         </Grid>
@@ -78,5 +85,6 @@ function mapStateToProps(state) {
   // debugger;
   return {text: state.text, searchedStories: state.searchedStories, searchComplete: state.searchComplete}
 }
+// is state only mapped to props after the component remounts?
 
 export default connect(mapStateToProps, {fetchByKeyword})(KeywordDashboard);

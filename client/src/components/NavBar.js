@@ -37,6 +37,13 @@ const NavBar = () => {
             </Button>
           </Link>
         </Grid>
+        <Grid item>
+          <Link to='/sources'>
+            <Button variant="contained" color="primary">
+              Sources
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
     </div>
   );
