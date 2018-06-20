@@ -7,6 +7,7 @@ import { Switch } from 'react-router';
 import StoryDashboard from './containers/StoryDashboard';
 import KeywordDashboard from './containers/KeywordDashboard';
 import CategoryDashboard from './containers/CategoryDashboard';
+import SourceDashboard from './containers/SourceDashboard';
 import Home from './containers/Home';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path='/stories' component={StoryDashboard} />
             <Route path='/search' component={KeywordDashboard} />
             <Route path='/categories' component={CategoryDashboard} />
+            <Route path='/sources' component={SourceDashboard} />
           </Switch>
         </div>
       </Router>

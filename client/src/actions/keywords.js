@@ -6,8 +6,6 @@ export function fetchByKeyword(keyword) {
       .then(resp => resp.json())
       .then(json => json.articles)
       .then(searchedStories => {
-        // console.log(searchedStories)
-        // debugger;
         dispatch({ type: 'FETCH_BY_KEYWORD', searchedStories: searchedStories });
       });
   }
