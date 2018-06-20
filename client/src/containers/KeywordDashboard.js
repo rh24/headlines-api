@@ -24,28 +24,33 @@ class KeywordDashboard extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.fetchByKeyword(this.state.text);
-    this.setState({
-      text: '',
-      // searchedStories: [],
-    })
+    if (this.refs.searchTerm.value !== '') {
+      this.props.fetchByKeyword(this.state.text);
+      this.setState({
+        text: '',
+        // searchedStories: [],
+      })
+    } else {
+      alert('please enter a valid keyword search.');
+    }
   }
 
   render() {
     // debugger;
-    // const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
-    // const renderStories = (stories) => {
-    //   if (!!stories) {
-    //     return <h1>Results:</h1>
-    //   } else {
-    //     return <h1>No results found.</h1>
-    //   }
-    // }
+    const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
+    const renderStories = (stories) => {
+      if (!!stories) {
+        return <h1>Results:</h1>
+      } else {
+        return <h1>No results found.</h1>
+      }
+    }
     return (
       <div className="location-dashboard">
-        <h1>Search Top Headlines</h1>
+        <h1>Search Everything</h1>
         <form onSubmit={(event) => this.handleSubmit(event)}>
           <input
+            ref="searchTerm"
             type="text"
             placeholder="Keyword..."
             onChange={(event) => this.handleChange(event)} />
@@ -53,7 +58,8 @@ class KeywordDashboard extends React.Component {
             type="submit" />
         </form><br />
         <Grid container spacing={8}>
-          {this.props.searchedStories}
+          {renderStories()}<br />
+          {stories}
         </Grid>
       </div>
     )
@@ -66,7 +72,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   // debugger;
-  return {text: state.text, searchedStories: state.storiesReducer.searchedStories}
+  return {text: state.text, searchedStories: state.searchedStories}
 }
 
 export default connect(mapStateToProps, {fetchByKeyword})(KeywordDashboard);
