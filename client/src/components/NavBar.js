@@ -10,6 +10,13 @@ const NavBar = () => {
     <div style={{ padding: 20 }}>
       <Grid container className="navbar" justify='center' spacing={8}>
         <Grid item>
+          <Link to='/'>
+            <Button variant="contained" color="primary">
+              Home
+            </Button>
+          </Link>
+        </Grid>
+        <Grid item>
           <Link to='/stories'>
             <Button variant="contained" color="primary">
               My Stories
