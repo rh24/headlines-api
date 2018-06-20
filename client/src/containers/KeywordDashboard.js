@@ -1,26 +1,10 @@
-// Handles user's saved locations by holding them in state.
-// Makes a new <LocationCard location={location} /> for each of the user's saved places.
-// Places can be Country, City, State.
-// <LocationDashboard /> component also queries the News API for top headlines per location, then, passes them down as props for each respective LocationCard.
-
-/*
-this.state = {
-  locations: [
-    {
-      name: 'New York City',
-      headlines: [
-        {
-          title: 'Best in Theaters 2018',
-          author: 'April May',
-          date:
-        }
-      ]
-    }
-  ],
-}
-*/
-
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchByKeyWord } from '../actions/keywords';
+import StoryCard from '../components/StoryCard';
+import Grid from '@material-ui/core/Grid';
+import HoverCard from '../components/HoverCard';
+
 
 class KeyWord extends React.Component {
   constructor(props) {
@@ -37,14 +21,23 @@ class KeyWord extends React.Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault;
+    this.props.fetchByKeyWord();
+  }
+
   render() {
     return (
       <div className="location-dashboard">
-        <h1>Top Headlines by Location</h1>
-        <label>Enter search term: </label>
-        <input
-        placeholder="Keyword..."
-        onChange={(event) => this.handleChange(event)} />
+        <h1>Search Top Headlines</h1>
+        <form onSubmit={() => this.handleSubmit()}>
+          <input
+            type="text"
+            placeholder="Keyword..."
+            onChange={(event) => this.handleChange(event)} />
+          <input
+            type="submit" />
+        </form>
       </div>
     )
   }
