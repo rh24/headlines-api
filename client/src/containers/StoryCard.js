@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import HoverCard from '../components/HoverCard';
 
 const styles = {
   contentBackground: {
@@ -38,15 +39,21 @@ class StoryCard extends Component {
     openInNewTab(this.props.story.url)
   }
 
+  handleMouseOver = () => {
+    return (
+      <HoverCard story={this.props.story} />
+    )
+  }
+
   render() {
-    // debugger;
     // const { classes } = this.props;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
     return (
       <Grid item>
         <Card
         style={styles.card}
-        onClick={() => this.handleClick()}>
+        onClick={() => this.handleClick()}
+        onMouseOver={() => this.handleMouseOver()}>
           <CardMedia
           style={styles.media}
           image={urlToImage}>

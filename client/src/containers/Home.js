@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchStories } from '../actions/stories';
-import StoryCard from '../components/StoryCard';
+import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
 

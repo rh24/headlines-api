@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchByKeyword } from '../actions/keywords';
-import StoryCard from '../components/StoryCard';
+import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
 
@@ -12,7 +12,8 @@ class KeywordDashboard extends React.Component {
 
     this.state = {
       text: '',
-      searchedStories: []
+      searchedStories: [],
+      searchComplete: false,
     }
   }
 
@@ -28,7 +29,8 @@ class KeywordDashboard extends React.Component {
       this.props.fetchByKeyword(this.state.text);
       this.setState({
         text: '',
-        // searchedStories: [],
+        searchedStories: [],
+        searchComplete: true
       })
     } else {
       alert('please enter a valid keyword search.');
@@ -38,13 +40,14 @@ class KeywordDashboard extends React.Component {
   render() {
     // debugger;
     const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
-    const renderStories = (stories) => {
-      if (!!stories) {
-        return <h1>Results:</h1>
-      } else {
-        return <h1>No results found.</h1>
-      }
-    }
+    let heading;
+
+    if (stories.length != 0) {
+      heading = <h1>Results:</h1>;
+    } else if (stories.length === 0 && this.props.searchComplete === true) {
+      heading = <h1>No results found.</h1>;
+    } // how to get this working?
+
     return (
       <div className="location-dashboard">
         <h1>Search Everything</h1>
@@ -53,12 +56,13 @@ class KeywordDashboard extends React.Component {
             ref="searchTerm"
             type="text"
             placeholder="Keyword..."
+            value={this.state.text}
             onChange={(event) => this.handleChange(event)} />
           <input
             type="submit" />
         </form><br />
         <Grid container spacing={8}>
-          {renderStories()}<br />
+          {heading}<br />
           {stories}
         </Grid>
       </div>
@@ -72,7 +76,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   // debugger;
-  return {text: state.text, searchedStories: state.searchedStories}
+  return {text: state.text, searchedStories: state.searchedStories, searchComplete: state.searchComplete}
 }
 
 export default connect(mapStateToProps, {fetchByKeyword})(KeywordDashboard);
