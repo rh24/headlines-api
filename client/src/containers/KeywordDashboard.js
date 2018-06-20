@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchByKeyWord } from '../actions/keywords';
+import { fetchByKeyword } from '../actions/keywords';
 import StoryCard from '../components/StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
 
 
-class KeyWord extends React.Component {
+class KeywordDashboard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       text: '',
+      stories: []
     }
   }
 
@@ -22,15 +23,15 @@ class KeyWord extends React.Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault;
-    this.props.fetchByKeyWord();
+    event.preventDefault();
+    this.props.fetchByKeyword(this.state.text);
   }
 
   render() {
     return (
       <div className="location-dashboard">
         <h1>Search Top Headlines</h1>
-        <form onSubmit={() => this.handleSubmit()}>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
           <input
             type="text"
             placeholder="Keyword..."
@@ -38,9 +39,18 @@ class KeyWord extends React.Component {
           <input
             type="submit" />
         </form>
+        {this.state.text}
       </div>
     )
   }
 }
 
-export default KeyWord;
+function mapDispatchToProps(dispatch) {
+
+}
+
+function mapStateToProps(state) {
+  return {text: state.text, stories: state.stories}
+}
+
+export default connect(mapStateToProps, {fetchByKeyword})(KeywordDashboard);
