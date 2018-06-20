@@ -28,6 +28,14 @@ class KeywordDashboard extends React.Component {
   }
 
   render() {
+    const stories = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
+    const renderStories = (stories) => {
+      if (!!stories) {
+        return <h1>Results:</h1>
+      } else {
+        return <h1>No results found.</h1>
+      }
+    }
     return (
       <div className="location-dashboard">
         <h1>Search Top Headlines</h1>
@@ -38,8 +46,11 @@ class KeywordDashboard extends React.Component {
             onChange={(event) => this.handleChange(event)} />
           <input
             type="submit" />
-        </form>
-        {this.state.text}
+        </form><br />
+        {renderStories}
+        <Grid container spacing={8}>
+          {stories}
+        </Grid>
       </div>
     )
   }
