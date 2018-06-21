@@ -40,19 +40,21 @@ class StoryCard extends Component {
   }
 
   handleClick = () => {
-    openInNewTab(this.props.story.url)
+    openInNewTab(this.props.story.url);
   }
 
   handleMouseOver = () => {
     this.setState({
       mousedOver: !this.state.mousedOver,
-    })
+    });
   }
+
+  // onMouseEnter={() => this.handleMouseOver()}
+  // onMouseLeave={() => this.handleMouseOver()}
 
   render() {
     // const { classes } = this.props;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
-    let card;
 
     const renderCard = () => {
       if (this.state.mousedOver) {
