@@ -67,15 +67,13 @@ class StoryCard extends Component {
         return ([
           <CardMedia
           style={styles.media}
-          image={urlToImage}>
+          image={urlToImage}
+          key="image">
             <img src={urlToImage} />
           </CardMedia>,
-          <CardContent>
+          <CardContent key="content">
             <Typography gutterBottom variant="headline" component="h2">
               {title}
-            </Typography>
-            <Typography component="p">
-              {description}
             </Typography>
           </CardContent>
         ]);

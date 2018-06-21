@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchStories } from '../actions/stories';
-import { fetchUser } from '../actions/users/';
+import { fetchUser } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -41,10 +41,12 @@ class Home extends React.Component {
     const logIn = () => {
       if (this.state.username === '') {
         return ([
-          <h3>Enter your username: </h3>,
-          <form onSubmit={(event) => this.handleSubmit(event)}>
-            <input type="text" />
-            <input type="submit" />
+          <h3 key="heading">Enter your username: </h3>,
+          <form
+            key="login"
+            onSubmit={(event) => this.handleSubmit(event)}>
+              <input type="text" />
+              <input type="submit" />
           </form>
         ])
       }
@@ -65,7 +67,7 @@ class Home extends React.Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  // bindActionCreators({fetchStories: fetchStories, dispatch});
+  // bindActionCreators({fetchStories: fetchStories, fetchUser: fetchUser, dispatch});
   // why don't we need this?
 }
 
@@ -73,4 +75,4 @@ function mapStateToProps(state) {
   return {username: state.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchStories, fetchUser})(Home);
+export default connect(mapStateToProps, {fetchStories: fetchStories, fetchUser: fetchUser})(Home);
