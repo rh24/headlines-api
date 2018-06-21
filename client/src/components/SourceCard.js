@@ -26,16 +26,9 @@ const styles = {
   }
 };
 
-// <CardMedia
-//   className={styles.media}
-//   image=""
-//   title=""
-// />
-
 const SourceCard = (props) => {
   // const { classes } = props;
   const { id, name, description, url, category, language, country } = props.source;
-  // debugger;
 
   return (
     <Grid item xs={12} sm={6}>
