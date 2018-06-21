@@ -18,4 +18,10 @@ export function fetchSavedStories() {
   // }
 }
 
+export function saveStory() {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/users')
+  }
+}
+
 // for some reason, even after changing the request parameter for pageSize to equal 50, only 20 results display on the page.
