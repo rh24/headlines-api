@@ -1,5 +1,6 @@
 // <CategoryDashboard /> will be a stateful class component.
-// <CategoryCard /> will be a child, stateless functional/presentation component.
+// <CategoryButton /> will be a child, stateless functional/presentation component.
+// Pass in the button click handler events as props to <CategoryButton />
 
 import React, { Component } from 'react';
 
