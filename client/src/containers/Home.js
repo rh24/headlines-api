@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchStories } from '../actions/stories';
-import { fetchUser } from '../actions/users';
+import { fetchUser, createUser } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -25,10 +25,8 @@ class Home extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    debugger;
-    // this.setState({
-    //   username: event.target.value,
-    // });
+    // debugger;
+    this.props.createUser();
   }
 
   handleClick = () => {
@@ -47,7 +45,7 @@ class Home extends React.Component {
     const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
 
     const logIn = () => {
-      if (this.state.username === '') {
+      if (!this.props.username) {
         return ([
           <h3 key="heading">Enter your username: </h3>,
           <form
@@ -66,7 +64,7 @@ class Home extends React.Component {
 
     return ([
       <div>
-        { logIn() || <LoggedIn username={this.state.username} handleClick={this.handleClick} /> }
+        { logIn() || <LoggedIn username={this.props.username} handleClick={() => this.handleClick} /> }
       </div>,
       <div className="homepage">
         <h1>U.S. Top Headlines</h1>
@@ -87,4 +85,4 @@ function mapStateToProps(state) {
   return {username: state.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchStories: fetchStories, fetchUser: fetchUser})(Home);
+export default connect(mapStateToProps, {fetchStories, fetchUser, createUser})(Home);
