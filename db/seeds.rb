@@ -13,3 +13,6 @@ Category.create(name: "health")
 Category.create(name: "science")
 Category.create(name: "sports")
 Category.create(name: "technology")
+
+User.create(username: "rebe")
+User.create(username: "turtlewen")
