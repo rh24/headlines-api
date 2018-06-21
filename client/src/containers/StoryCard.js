@@ -33,6 +33,10 @@ const styles = {
 class StoryCard extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      mousedOver: false,
+    }
   }
 
   handleClick = () => {
@@ -40,36 +44,48 @@ class StoryCard extends Component {
   }
 
   handleMouseOver = () => {
-    return (
-      <HoverCard story={this.props.story} />
-    )
+    this.setState({
+      mousedOver: !this.state.mousedOver,
+    })
   }
 
   render() {
     // const { classes } = this.props;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
+    let card;
+
+    const renderCard = () => {
+      if (this.state.mousedOver) {
+        return (
+          <HoverCard story={this.props.story} />
+        );
+      } else {
+        return ([
+          <CardMedia
+          style={styles.media}
+          image={urlToImage}>
+            <img src={urlToImage} />
+          </CardMedia>,
+          <CardContent>
+            <Typography gutterBottom variant="headline" component="h2">
+              {title}
+            </Typography>
+            <Typography component="p">
+              {description}
+            </Typography>
+          </CardContent>
+        ]);
+      }
+    };
+
     return (
       <Grid item>
         <Card
         style={styles.card}
         onClick={() => this.handleClick()}
-        onMouseOver={() => this.handleMouseOver()}>
-          <CardMedia
-          style={styles.media}
-          image={urlToImage}>
-            <img src={urlToImage} />
-          </CardMedia>
-          <div style={styles.contentBackground}>
-            <CardContent
-            style={styles.contentBackground}>
-              <Typography gutterBottom variant="headline" component="h2">
-                {title}
-              </Typography>
-              <Typography component="p">
-                {description}
-              </Typography>
-            </CardContent>
-          </div>
+        onMouseEnter={() => this.handleMouseOver()}
+        onMouseLeave={() => this.handleMouseOver()}>
+          { renderCard() }
         </Card>
       </Grid>
     );
