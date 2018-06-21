@@ -13,6 +13,7 @@ class StoryDashboard extends React.Component {
 
     this.state = {
       savedStories: []
+      // the above is fetched from my localhost API.
     }
   }
 

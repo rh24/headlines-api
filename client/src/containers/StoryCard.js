@@ -49,6 +49,7 @@ class StoryCard extends Component {
     });
   }
 
+  // Use the below method to post to local API.
   handleSave = () => {
 
   }
