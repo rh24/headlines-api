@@ -7,6 +7,7 @@ import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
 import Button from '@material-ui/core/Button';
+import LoggedIn from '../components/LoggedIn';
 
 class Home extends React.Component {
   constructor(props) {
@@ -24,15 +25,22 @@ class Home extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      username: event.target.value,
-    });
+    debugger;
+    // this.setState({
+    //   username: event.target.value,
+    // });
   }
 
   handleClick = () => {
     this.setState({
       username: '',
     });
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      username: event.target.value,
+    })
   }
 
   render() {
@@ -45,16 +53,20 @@ class Home extends React.Component {
           <form
             key="login"
             onSubmit={(event) => this.handleSubmit(event)}>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={(event) => this.handleChange(event)} />
               <input type="submit" />
           </form>
-        ])
+        ]);
+      } else {
+        return null;
       }
     }
 
     return ([
       <div>
-        { logIn() }
+        { logIn() || <LoggedIn username={this.state.username} handleClick={this.handleClick} /> }
       </div>,
       <div className="homepage">
         <h1>U.S. Top Headlines</h1>
