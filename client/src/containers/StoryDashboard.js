@@ -1,11 +1,19 @@
 // <StoryDashboard /> will be a stateful class component.
 // <StoryCard /> will be a child, stateless functional/presentation component.
-
 import React from 'react';
+import { fetchSavedStories } from '../actions/stories';
+import { connect } from 'react-redux';
+import StoryCard from './StoryCard';
+import Grid from '@material-ui/core/Grid';
+import HoverCard from '../components/HoverCard';
 
 class StoryDashboard extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      savedStories: []
+    }
   }
 
   render() {
@@ -17,4 +25,10 @@ class StoryDashboard extends React.Component {
   }
 }
 
-export default StoryDashboard;
+function mapDispatchToProps(dispatch) {}
+
+function mapStateToProps(state) {
+  return {savedStories: state.savedStories}
+}
+
+export default connect(mapStateToProps, {fetchSavedStories})(StoryDashboard);

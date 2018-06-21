@@ -42,4 +42,4 @@ function mapStateToProps(state) {
   return {stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchStories})(Home);
+export default connect(mapStateToProps, {fetchStories: fetchStories, saveStory: saveStory})(Home);

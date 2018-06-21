@@ -49,8 +49,9 @@ class StoryCard extends Component {
     });
   }
 
-  // onMouseEnter={() => this.handleMouseOver()}
-  // onMouseLeave={() => this.handleMouseOver()}
+  handleSave = () => {
+
+  }
 
   render() {
     // const { classes } = this.props;
