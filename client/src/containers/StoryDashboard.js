@@ -6,6 +6,10 @@ import React from 'react';
 class StoryDashboard extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      savedStories: []
+    }
   }
 
   render() {

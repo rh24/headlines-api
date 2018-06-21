@@ -25,9 +25,6 @@ const styles = {
     height: 200,
     width: 200,
   },
-  link: {
-
-  }
 };
 
 class StoryCard extends Component {
@@ -48,9 +45,6 @@ class StoryCard extends Component {
       mousedOver: !this.state.mousedOver,
     });
   }
-
-  // onMouseEnter={() => this.handleMouseOver()}
-  // onMouseLeave={() => this.handleMouseOver()}
 
   render() {
     // const { classes } = this.props;

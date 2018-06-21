@@ -9,6 +9,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import SaveButton from './SaveButton';
+
 
 const styles = {
   card: {
@@ -19,13 +21,14 @@ const styles = {
 }
 
 const HoverCard = (props) => {
-  const { urlToImage, title, url, source, description, publishedAt, author } = props.story;
+  const { urlToImage, title, url, source, description, publishedAt, author, handleSave } = props.story;
 
   return (
     <Card style={styles.card}>
       <CardContent>
         <h2>{title}</h2>
         <p>{description}</p>
+        <SaveButton story={props.story}/>
       </CardContent>
     </Card>
   )
