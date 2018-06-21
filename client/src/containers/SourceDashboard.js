@@ -19,16 +19,19 @@ class SourceDashboard extends React.Component {
   }
 
   render() {
-    
+    const sources = this.props.sources.map((source, idx) => <SourceCard key={idx} source={source} />);
+
     return (
       <Grid container spacing={8}>
-
+        {sources}
       </Grid>
     )
   }
 }
 
-function mapDispatchToProps(dispatch) {}
+function mapDispatchToProps(dispatch) {
+
+}
 
 function mapStateToProps(state) {
   return {sources: state.sources};
