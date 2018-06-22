@@ -5,9 +5,17 @@ class UserController < ApplicationController
 
   def create
     user = User.create(user_params)
+    if user.save
+      render json: user
+    end
   end
 
   def show
+  end
+
+  def index
+    users = User.all
+    render json: users
   end
 
   def edit
