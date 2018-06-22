@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
-      render json: user
+      render json: user, status: 200
     end
   end
 
