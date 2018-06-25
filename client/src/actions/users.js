@@ -23,7 +23,7 @@ export function createUser(username) {
     Accept: 'application/json',
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ user: {username: username} })
+    body: JSON.stringify({"username": username})
   };
 
   return (dispatch) => {
