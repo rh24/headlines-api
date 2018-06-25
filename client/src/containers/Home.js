@@ -42,7 +42,7 @@ class Home extends React.Component {
   }
 
   fetchUser = (username) => {
-    this.props.fetchUser(username);
+    this.props.fetchUser('username');
   }
 
   render() {

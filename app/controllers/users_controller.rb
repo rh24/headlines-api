@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.new(user_params)
     if user.save
-      render json: user, status: 201
+      render json: user, status: 200
+    else
+      render json: { message: user.errors }, status: 400
     end
   end
 

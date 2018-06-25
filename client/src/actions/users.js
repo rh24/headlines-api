@@ -15,15 +15,15 @@ export function createUser(username) {
     method: 'POST',
     mode: 'cors',
     headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials':true,
-    'Access-Control-Allow-Methods':'POST, GET',
-    'Access-Control-Request-Method': 'POST',
-    'Access-Control-Max-Age': 0,
+    // 'Access-Control-Allow-Origin': '*',
+    // 'Access-Control-Allow-Credentials':true,
+    // 'Access-Control-Allow-Methods':'POST, GET',
+    // 'Access-Control-Request-Method': 'POST',
+    // 'Access-Control-Max-Age': 0,
     Accept: 'application/json',
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify({username: username})
+    body: JSON.stringify({ user: {username: username} })
   };
 
   return (dispatch) => {
