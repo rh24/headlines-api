@@ -16,3 +16,4 @@ Category.create(name: "technology")
 
 User.create(username: "rebe")
 User.create(username: "turtlewen")
+User.create(username: "username")

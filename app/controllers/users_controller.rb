@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def new
   end
@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
-      render json: user, status: 200
+      render json: user, status: 201
     end
   end
 
@@ -15,7 +15,7 @@ class UserController < ApplicationController
 
   def index
     users = User.all
-    render json: users
+    render json: users, status: 200
   end
 
   def edit

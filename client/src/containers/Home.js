@@ -41,6 +41,10 @@ class Home extends React.Component {
     })
   }
 
+  fetchUser = () => {
+    this.props.fetchUser(username);
+  }
+
   render() {
     const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
 
@@ -71,6 +75,9 @@ class Home extends React.Component {
         <Grid container className="story-grid" spacing={8}>
           {storyCards}
         </Grid>
+      </div>,
+      <div>
+        <Button onClick={this.fetchUser(username)}>fetchUser</Button>
       </div>
     ])
   }
