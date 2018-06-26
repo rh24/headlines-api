@@ -46,14 +46,11 @@ class StoryCard extends Component {
     });
   }
 
-<<<<<<< HEAD
-=======
   // Use the below method to post to local API.
   handleSave = () => {
 
   }
 
->>>>>>> rails-api
   render() {
     // const { classes } = this.props;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
