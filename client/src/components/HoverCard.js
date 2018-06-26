@@ -21,17 +21,18 @@ const styles = {
 }
 
 const HoverCard = (props) => {
-  const { urlToImage, title, url, source, description, publishedAt, author, handleSave } = props.story;
+  const { urlToImage, title, url, source, description, publishedAt, author } = props.story;
 
   return (
     <Card style={styles.card}>
       <CardContent>
         <h2>{title}</h2>
         <p>{description}</p>
+        <SaveButton story={props.story} />
       </CardContent>
     </Card>
   )
 }
-        // <SaveButton story={props.story}/>
+
 
 export default HoverCard;

@@ -57,6 +57,7 @@ class Home extends React.Component {
             onSubmit={(event) => this.handleSubmit(event)}>
               <input
                 type="text"
+                name="user[username]"
                 onChange={(event) => this.handleChange(event)} />
               <input type="submit" />
           </form>

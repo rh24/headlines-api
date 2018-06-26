@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import HoverCard from '../components/HoverCard';
+import SaveButton from '../components/SaveButton';
 
 const styles = {
   contentBackground: {
@@ -47,8 +48,9 @@ class StoryCard extends Component {
   }
 
   // Use the below method to post to local API.
-  handleSave = () => {
-
+  handleSave = (event) => {
+    event.stopPropagation();
+    console.log("save me!")
   }
 
   render() {
@@ -58,7 +60,8 @@ class StoryCard extends Component {
     const renderCard = () => {
       if (this.state.mousedOver) {
         return (
-          <HoverCard story={this.props.story} />
+          <HoverCard story={this.props.story}>
+          </HoverCard>
         );
       } else {
         return ([
