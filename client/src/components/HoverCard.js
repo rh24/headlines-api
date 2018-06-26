@@ -28,10 +28,10 @@ const HoverCard = (props) => {
       <CardContent>
         <h2>{title}</h2>
         <p>{description}</p>
-        <SaveButton story={props.story}/>
       </CardContent>
     </Card>
   )
 }
+        // <SaveButton story={props.story}/>
 
 export default HoverCard;
