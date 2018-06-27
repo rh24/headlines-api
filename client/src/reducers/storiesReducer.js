@@ -4,7 +4,7 @@ export default function fetch(state = [], action) {
       return action.stories;
     case 'FETCH_USER_STORIES':
       console.log("i was properly fetched.");
-      // return action.stories;
+      return action.stories;
     default:
       return state;
   }

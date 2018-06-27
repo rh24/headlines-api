@@ -30,7 +30,7 @@ export function createUser(username) {
     return fetch(`http://localhost:3001/users/`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      // .then(json => json.filter((user, idx) => user.username === username))
-      // .then(user =>)
+      .then(json => json.find((user, idx) => user.username === username))
+      .then(user => console.log(user))
   }
 }
