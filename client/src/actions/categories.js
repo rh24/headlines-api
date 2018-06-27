@@ -1,4 +1,4 @@
-export default function suggestCategories() {
+export default function suggestCatgories() {
   return (dispatch) => {
     return fetch()
   }
