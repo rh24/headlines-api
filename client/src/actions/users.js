@@ -19,7 +19,7 @@ export function fetchUserStories(userId) {
   return (dispatch) => {
     return fetch(`http://localhost:3001/users/${userId}`)
       .then(resp => resp.json())
-      .then(user => dispatch({ type: 'FETCH_USER_STORIES', stories: user.stories })
+      .then(user => dispatch({ type: 'FETCH_USER_STORIES', stories: user.stories }))
   }
 }
 

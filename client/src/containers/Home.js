@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchTopStories } from '../actions/stories';
-import { fetchUser, createUser } from '../actions/users';
+import { fetchUser, createUser, fetchUserStories } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -31,17 +31,16 @@ class Home extends React.Component {
     // When is the state mapped to props? Does it happen on change as well?
     fetch('http://localhost:3001/users')
       .then(resp => resp.json())
-      .then(users => users.find((user, idx) => user.username === username)
-      .then(user => if (!user) {
-        this.props.createUser(username);
-      } else {
-        this.props.fetchUserStories(user.id);
+      .then(users => users.find((user, idx) => user.username === username))
+      .then(user => {
+        if (!user) {
+          this.props.createUser(username);
+        } else {
+          this.props.fetchUserStories(user.id);
+        }
       })
-    // let userFound = this.props.createUser(username);
     // Once they log in, if they are a new user, I will take them to the category dashboard to suggest favorite topics.
-    // if (userFound === "no match.") {
-    //   this.props.createUser(username);
-    // }
+
     // this.setState({
     //   username: userFound,
     //   loggedIn: true,
@@ -107,4 +106,4 @@ function mapStateToProps(state) {
   return {username: state.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchTopStories, fetchUser, createUser})(Home);
+export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, fetchUser, createUser})(Home);
