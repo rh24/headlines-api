@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    user = User.where(id: params[:id])
+    render json: user, status: 200
   end
 
   def index
