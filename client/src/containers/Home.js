@@ -16,6 +16,7 @@ class Home extends React.Component {
     this.state = {
       username: '',
       stories: [],
+      loggedIn: false,
     }
   }
 
@@ -30,6 +31,10 @@ class Home extends React.Component {
     // When is the state mapped to props? Does it happen on change as well?
     const userFound = this.props.fetchUser(username);
     // Once they log in, if they are a new user, I will take them to the category dashboard to suggest favorite topics.
+    this.setState({
+      username: userFound,
+      loggedIn: true,
+    })
   }
 
   handleClick = () => {
@@ -48,7 +53,7 @@ class Home extends React.Component {
     const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
 
     const logIn = () => {
-      if (!this.props.username) {
+      if (!this.state.loggedIn) {
         return ([
           <h3 key="heading">Enter your username: </h3>,
           <form
