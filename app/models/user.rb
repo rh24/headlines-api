@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-  has_many :stories
+  has_many :user_stories
+  has_many :stories, through: :user_stories
   has_many :categories
-end 
+end
