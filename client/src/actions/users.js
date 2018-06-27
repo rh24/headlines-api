@@ -27,6 +27,6 @@ export function createUser(username) {
       .then(resp => resp.json())
       .catch(error => console.log(error))
       .then(json => json.find((user, idx) => user.username === username))
-      .then(user => console.log(user))
+      .then(user => dispatch({ type: 'SUGGEST_FAVORITE_CATEGORIES', user }))
   }
 }
