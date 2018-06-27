@@ -48,10 +48,10 @@ class StoryCard extends Component {
   }
 
   // Use the below method to post to local API.
-  handleSave = (event) => {
-    event.stopPropagation();
-    console.log("save me!")
-  }
+  // handleSave = (event) => {
+  //   event.stopPropagation();
+  //   console.log("save me!")
+  // }
 
   render() {
     // const { classes } = this.props;
@@ -67,7 +67,7 @@ class StoryCard extends Component {
         return ([
           <CardMedia
           style={styles.media}
-          image={urlToImage}
+          image="card-image"
           key="image">
             <img src={urlToImage} />
           </CardMedia>,
