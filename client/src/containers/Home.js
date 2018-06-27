@@ -76,9 +76,6 @@ class Home extends React.Component {
           {storyCards}
         </Grid>
       </div>,
-      <div>
-        <Button onClick={() => this.fetchUser("username")}>fetchUser</Button>
-      </div>
     ])
   }
 };
