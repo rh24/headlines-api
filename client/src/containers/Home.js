@@ -25,8 +25,11 @@ class Home extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // debugger;
-    this.props.createUser();
+    let username;
+    // username is value produced by form input, which is handled on change.
+    // When is the state mapped to props? Does it happen on change as well?
+    username = this.state.username;
+    this.props.createUser(username);
   }
 
   handleClick = () => {
