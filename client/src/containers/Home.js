@@ -29,6 +29,7 @@ class Home extends React.Component {
     // username is value produced by form input, which is handled on change.
     // When is the state mapped to props? Does it happen on change as well?
     const userFound = this.props.fetchUser(username);
+    // Once they log in, if they are a new user, I will take them to the category dashboard to suggest favorite topics.
   }
 
   handleClick = () => {
