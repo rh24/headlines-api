@@ -5,6 +5,7 @@ export function fetchUser(username) {
     return fetch(`http://localhost:3001/users/`)
       .then(resp => resp.json())
       .then(json => json.filter((user, idx) => user.username === username))
+      .then(user => user === null ? createUser(username) : user)
       .then(user => dispatch({ type: 'FETCH_USER_STORIES', user }))
   }
 }

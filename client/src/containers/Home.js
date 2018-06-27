@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
-import { fetchStories } from '../actions/stories';
+import { fetchTopStories } from '../actions/stories';
 import { fetchUser, createUser } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchStories();
+    this.props.fetchTopStories();
   }
 
   handleSubmit = (event) => {
@@ -31,13 +31,6 @@ class Home extends React.Component {
     // When is the state mapped to props? Does it happen on change as well?
     username = this.state.username;
     const userFound = this.props.fetchUser(username);
-    // debugger;
-    if (!userFound) {
-      user = this.props.createUser(username);
-      return user;
-    } else {
-
-    }
   }
 
   handleClick = () => {
@@ -102,4 +95,4 @@ function mapStateToProps(state) {
   return {username: state.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchStories, fetchUser, createUser})(Home);
+export default connect(mapStateToProps, {fetchTopStories, fetchUser, createUser})(Home);
