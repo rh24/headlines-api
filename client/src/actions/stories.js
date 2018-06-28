@@ -27,12 +27,12 @@ export function saveStory(username, userId, story) {
       url: story.url,
       url_to_image: story.urlToImage,
       published_at: story.publishedAt,
-      source: story.source
+      source: story.source.name
     })
   };
 
   return (dispatch) => {
-    // I'd need to both create a new source and a new story if on my API side I indicate that stories belong to a source, so for now, I will leave the source data as an object.
+    // I'd need to both create a new source and a new story if on my API side I indicate that stories belong to a source, so for now, I will leave the source data as a string
     return fetch(`http://localhost:3001/users/${userId}/stories`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))

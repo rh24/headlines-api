@@ -5,11 +5,7 @@ export default function storiesReducer(state = [], action) {
     case 'FETCH_USER_STORIES':
       // console.log("i was properly fetched.");
       // debugger;
-      return [...state.saved, action.stories];
-    case 'UPDATE_USER_STORIES':
-      console.log("i'm being updated");
-      debugger;
-      return [...state, action.stories];
+      return action.stories;
     default:
       return state;
   }
