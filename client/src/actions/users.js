@@ -9,23 +9,21 @@ export function fetchUserStories(userId) {
   };
 }
 
-// I put the below method within my submit handler in the Home component because the fetch happens asynchronously.
-
-// export function fetchUser(username) {
-//   return (dispatch) => {
-//     return fetch(`http://localhost:3001/users`)
-//       .then(resp => resp.json())
-//       .then(userArray => userArray.find((user) => user.username === username))
-//       .then(user => {
-//         // debugger;
-//         if (!!user) {
-//           dispatch({ type: 'SET_USER_STATE', user: user });
-//         } else {
-//           createUser(username);
-//         }
-//       });
-//   };
-// }
+export function fetchUser(username) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/users`)
+      .then(resp => resp.json())
+      .then(userArray => userArray.find((user) => user.username === username))
+      .then(user => {
+        // debugger;
+        if (!!user) {
+          dispatch({ type: 'SET_USER_STATE', user: user });
+        } else {
+          createUser(username);
+        }
+      });
+  };
+}
 
 export function createUser(username) {
   const args = {
