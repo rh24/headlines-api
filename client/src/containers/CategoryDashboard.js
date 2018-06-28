@@ -2,10 +2,18 @@
 // <CategoryButton /> will be a child, stateless functional/presentation component.
 // Pass in the button click handler events as props to <CategoryButton />
 import Chip from '@material-ui/core/Chip';
+import { fetchAllCategories } from '../actions/categories';
 
 import React, { Component } from 'react';
 
 export default class CategoryDashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categories: [],
+    }
+  }
   render() {
     return (
       <div className="category-dashboard">

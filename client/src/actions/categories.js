@@ -1,4 +1,4 @@
-export default function suggestCatgories() {
+export function suggestCatgories() {
   return (dispatch) => {
     return fetch()
   }
@@ -6,7 +6,7 @@ export default function suggestCatgories() {
 
 // below will fetch to local API in order to make Material UI chips.
 
-export default function fetchAllCategories() {
+export function fetchAllCategories() {
   return (dispatch) => {
     return fetch('http://localhost:3001/categories')
       .then(resp => resp.json())
