@@ -3,10 +3,11 @@
 // Pass in the button click handler events as props to <CategoryButton />
 import Chip from '@material-ui/core/Chip';
 import { fetchAllCategories } from '../actions/categories';
+import { connect } from 'react-redux';
 
 import React, { Component } from 'react';
 
-export default class CategoryDashboard extends Component {
+class CategoryDashboard extends Component {
   constructor(props) {
     super(props);
 
@@ -32,3 +33,5 @@ function mapDispatchToProps(dispatch) {}
 // When a category card is "liked", the category will be saved/ POST to the User's information. This will persist to my local API.
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
+
+export default connect(mapStateToProps, {fetchAllCategories})(CategoryDashboard);
