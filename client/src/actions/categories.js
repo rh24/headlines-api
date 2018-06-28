@@ -3,3 +3,15 @@ export default function suggestCatgories() {
     return fetch()
   }
 }
+
+// below will fetch to local API in order to make Material UI chips.
+
+export default function fetchAllCategories() {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/categories')
+      .then(resp => resp.json())
+      .then(categories => dispatch({ type: 'FETCH_ALL_CATEGORIES', categories: categories }))
+  }
+}
+
+// fetch stories from each category from News API.
