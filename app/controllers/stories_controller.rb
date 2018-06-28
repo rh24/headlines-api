@@ -2,8 +2,16 @@ class StoriesController < ApplicationController
   # before_action :set_user
   before_action :set_story, only: [:show, :destroy]
 
-  def create
+  def new
+  end
 
+  def create
+    story = Story.new(story_params)
+    if story.save
+      render json: story, status: 200
+    else
+      render json: { message: story.errors }, status: 400
+    end
   end
 
   def show
@@ -21,7 +29,7 @@ class StoriesController < ApplicationController
 
   private
 
-  def stories_params
+  def story_params
     params.require(:story).permit(:author, :title, :description, :url, :url_to_image, :published_at)
   end
 
