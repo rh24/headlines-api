@@ -1,4 +1,4 @@
 class UserStory < ApplicationRecord
-  has_many :stories
-  has_many :users
+  belongs_to :user
+  belongs_to :story
 end
