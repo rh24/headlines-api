@@ -8,6 +8,7 @@ class StoriesController < ApplicationController
   def create
     story = Story.new(story_params)
     if story.save
+      user_story = UserStory.create(story: story, user: @user)
       render json: story, status: 200
     else
       render json: { message: story.errors }, status: 400
