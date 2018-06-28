@@ -53,7 +53,7 @@ export function removeStory(storyId, userId) {
     return fetch(`http://localhost:3001/users/${userId}/stories/${storyId}`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      .then(story => dispatch({ type: 'REMOVE_STORY', story: story, userId: userId }))
+      .then(story => dispatch({ type: 'REMOVE_STORY', storyId: storyId, userId: userId }))
   }
   // Do I also have to delete the user_story join table data?
   // I tried doing the above directly in the stories controller.
