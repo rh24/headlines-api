@@ -1,6 +1,7 @@
 // <CategoryDashboard /> will be a stateful class component.
 // <CategoryButton /> will be a child, stateless functional/presentation component.
 // Pass in the button click handler events as props to <CategoryButton />
+import Chip from '@material-ui/core/Chip';
 
 import React, { Component } from 'react';
 
