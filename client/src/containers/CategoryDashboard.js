@@ -23,6 +23,12 @@ export default class CategoryDashboard extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {categories: state.categories};
+}
+
+function mapDispatchToProps(dispatch) {}
+
 // When a category card is "liked", the category will be saved/ POST to the User's information. This will persist to my local API.
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
