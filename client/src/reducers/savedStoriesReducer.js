@@ -1,5 +1,7 @@
 export default function savedStoriesReducer(state = [], action) {
   switch (action.type) {
+    case "FETCH_USER_STORIES":
+      return action.savedStories;
     case "ADD_STORY":
       return [...state, action.stories];
     case 'UPDATE_USER_STORIES':

@@ -7,7 +7,7 @@ export function fetchUserStories(user) {
       .then(userArray => userArray.find((user) => user.id === user.id))
       .then(user => {
         if (!!user) {
-          dispatch({ type: 'FETCH_USER_STORIES', stories: user.stories })
+          dispatch({ type: 'FETCH_USER_STORIES', savedStories: user.stories })
         } else {
           alert('please, type in username in homepage');
         }
