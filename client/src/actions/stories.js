@@ -27,16 +27,16 @@ export function saveStory(username, userId, story) {
       url: story.url,
       url_to_image: story.urlToImage,
       published_at: story.publishedAt,
-      source_id: 1
+      source: story.source
     })
   };
 
   return (dispatch) => {
     // I need to both create a new source and a new story
-    return fetch(`http://localhost:3000/users/${userId}/stories`, args)
+    return fetch(`http://localhost:3001/users/${userId}/stories`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      .then(story => dispatch({ type: 'UPDATE_USER_STORIES', stories: story }))
+      .then(story => dispatch({ type: 'ADD_STORY', stories: story }))
   }
 }
 
