@@ -5,7 +5,7 @@ export default function storiesReducer(state = [], action) {
     case 'FETCH_USER_STORIES':
       console.log("i was properly fetched.");
       // debugger;
-      return action.savedStories || "This user has no stories saved.";
+      return action.stories;
     default:
       return state;
   }

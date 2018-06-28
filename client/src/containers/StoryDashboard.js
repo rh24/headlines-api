@@ -22,11 +22,12 @@ class StoryDashboard extends React.Component {
   }
 
   render() {
-    // const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
+    const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
 
     return (
       <div className="story-dashboard">
         <h1>Saved Stories</h1>
+        {savedStories}
       </div>
     );
   }
@@ -35,7 +36,8 @@ class StoryDashboard extends React.Component {
 function mapDispatchToProps(dispatch) {}
 
 function mapStateToProps(state) {
-  return {savedStories: state.savedStories}
+  // debugger;
+  return {savedStories: state.stories}
 }
 
 export default connect(mapStateToProps, {fetchUserStories})(StoryDashboard);
