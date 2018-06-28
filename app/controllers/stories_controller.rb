@@ -1,7 +1,9 @@
 class StoriesController < ApplicationController
+  # before_action :set_user
+  before_action :set_story, only: [:show, :destroy]
 
   def create
-    
+
   end
 
   def show
@@ -9,7 +11,8 @@ class StoriesController < ApplicationController
   end
 
   def index
-
+    stories = Story.all
+    render json: stories, status: 200
   end
 
   def destroy
@@ -18,7 +21,11 @@ class StoriesController < ApplicationController
 
   private
 
-  def set_user
+  def stories_params
+    params.require(:story).permit(:author, :title, :description, :url, :url_to_image, :published_at)
+  end
 
+  def set_user
+    @user = User.find_by(id: params[:id])
   end
 end

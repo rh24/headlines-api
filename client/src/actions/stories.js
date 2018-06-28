@@ -26,11 +26,12 @@ export function saveStory(username, userId, story) {
       description: story.description,
       url: story.url,
       url_to_image: story.urlToImage,
-      published_at: story.publishedAt
+      published_at: story.publishedAt,
     })
   };
 
   return (dispatch) => {
+    // I need to both create a new source and a new story
     return fetch(`http://localhost:3000/users/${userId}/stories`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
