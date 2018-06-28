@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchTopStories } from '../actions/stories';
-import { fetchUser, createUser, fetchUserStories } from '../actions/users';
+import { createUser, fetchUserStories } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -35,10 +35,8 @@ class Home extends React.Component {
       .then(user => {
         if (!user) {
           this.props.createUser(username);
-        } else {
-          this.props.fetchUserStories(user.id);
         }
-      })
+      });
     // Once they log in, if they are a new user, I will take them to the category dashboard to suggest favorite topics.
 
     // this.setState({
@@ -106,4 +104,4 @@ function mapStateToProps(state) {
   return {username: state.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, fetchUser, createUser})(Home);
+export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser})(Home);

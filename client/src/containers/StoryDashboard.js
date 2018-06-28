@@ -1,7 +1,7 @@
 // <StoryDashboard /> will be a stateful class component.
 // <StoryCard /> will be a child, stateless functional/presentation component.
 import React from 'react';
-import { fetchSavedStories } from '../actions/stories';
+import { fetchUserStories } from '../actions/users';
 import { connect } from 'react-redux';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
@@ -32,4 +32,4 @@ function mapStateToProps(state) {
   return {savedStories: state.savedStories}
 }
 
-export default connect(mapStateToProps, {fetchSavedStories})(StoryDashboard);
+export default connect(mapStateToProps, {fetchUserStories})(StoryDashboard);
