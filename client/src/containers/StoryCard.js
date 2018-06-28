@@ -60,7 +60,7 @@ class StoryCard extends Component {
   handleRemove = (event) => {
     event.stopPropagation();
     console.log('bye')
-    this.props.removeStory(this.props.story.id);
+    this.props.removeStory(this.props.story.id, this.props.userId);
     // this.setState({
     //   saved: false,
     // })
