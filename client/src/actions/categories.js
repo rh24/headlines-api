@@ -11,7 +11,7 @@ export function fetchAllCategories() {
     return fetch('http://localhost:3001/categories')
       .then(resp => resp.json())
       .then(categories => {
-        debugger;
+        // debugger;
         dispatch({ type: 'FETCH_ALL_CATEGORIES', categories: categories })
       })
   }

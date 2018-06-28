@@ -1,7 +1,7 @@
 // <CategoryDashboard /> will be a stateful class component.
 // <CategoryButton /> will be a child, stateless functional/presentation component.
 // Pass in the button click handler events as props to <CategoryButton />
-import Chip from '@material-ui/core/Chip';
+import CategoryChip from '../components/CategoryChip';
 import { fetchAllCategories } from '../actions/categories';
 import { connect } from 'react-redux';
 
@@ -21,8 +21,9 @@ class CategoryDashboard extends Component {
   }
 
   render() {
-    const categories = this.props.categories.map((category) => <Chip key={category.id} category={category.name}>{category.name}</Chip>)
-    // debugger;
+    const categories = this.props.categories.map((category, idx) => <CategoryChip key={idx} category={category} />);
+
+
     return (
       <div className="category-dashboard">
         {categories}
