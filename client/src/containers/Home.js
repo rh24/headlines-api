@@ -34,15 +34,17 @@ class Home extends React.Component {
       .then(users => users.find((user, idx) => user.username === username))
       .then(user => {
         if (!user) {
-          this.props.createUser(username);
+          return this.props.createUser(username);
         }
-      });
+      })
+      .then(user => {
+        username = user.username
+        this.setState({
+          username: username,
+          loggedIn: true,
+        })
+      })
     // Once they log in, if they are a new user, I will take them to the category dashboard to suggest favorite topics.
-
-    // this.setState({
-    //   username: userFound,
-    //   loggedIn: true,
-    // })
   }
 
   handleClick = () => {

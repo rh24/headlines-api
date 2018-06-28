@@ -17,7 +17,13 @@ class StoryDashboard extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.fetchUserStories(1);
+  }
+
   render() {
+    // const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
+
     return (
       <div className="story-dashboard">
         <h1>Saved Stories</h1>

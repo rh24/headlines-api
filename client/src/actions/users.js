@@ -4,7 +4,8 @@ export function fetchUserStories(userId) {
   return (dispatch) => {
     return fetch(`http://localhost:3001/users/${userId}`)
       .then(resp => resp.json())
-      .then(user => dispatch({ type: 'FETCH_USER_STORIES', stories: user.stories }))
+      .then(userArray => userArray.find((user) => user.id === userId))
+      .then(user => dispatch({ type: 'FETCH_USER_STORIES', savedStories: user.stories }))
   }
 }
 
