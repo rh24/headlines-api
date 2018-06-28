@@ -41,14 +41,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(id: params[:id])
   end
-
-  def stories(user_id)
-    stories = UserStory.where(user_id: user_id)
-    selectedStories = []
-    stories.each do |s|
-      selectedStories << Story.where(id: s.story_id)
-    end
-
-    selectedStories
-  end
 end
