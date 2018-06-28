@@ -15,10 +15,16 @@ class CategoryDashboard extends Component {
       categories: [],
     }
   }
+
+  componentDidMount() {
+    this.props.fetchAllCategories();
+  }
+
   render() {
     return (
       <div className="category-dashboard">
-        <h1>Favorite Categories</h1>
+        <Chip>
+        </Chip>
       </div>
     )
   }
