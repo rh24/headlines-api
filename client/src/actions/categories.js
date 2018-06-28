@@ -10,7 +10,10 @@ export function fetchAllCategories() {
   return (dispatch) => {
     return fetch('http://localhost:3001/categories')
       .then(resp => resp.json())
-      .then(categories => dispatch({ type: 'FETCH_ALL_CATEGORIES', categories: categories }))
+      .then(categories => {
+        debugger;
+        dispatch({ type: 'FETCH_ALL_CATEGORIES', categories: categories })
+      })
   }
 }
 

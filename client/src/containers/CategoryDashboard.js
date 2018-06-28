@@ -21,10 +21,11 @@ class CategoryDashboard extends Component {
   }
 
   render() {
+    const categories = this.props.categories.map((category) => <Chip key={category.id} category={category.name}>{category.name}</Chip>)
+    // debugger;
     return (
       <div className="category-dashboard">
-        <Chip>
-        </Chip>
+        {categories}
       </div>
     )
   }
