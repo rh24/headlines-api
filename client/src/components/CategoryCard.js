@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
+import HeadlineCard from './HeadlineCard';
 
 const CategoryCard = (props) => {
   const styles = {
@@ -8,14 +9,17 @@ const CategoryCard = (props) => {
     },
     listItem: {
       maxHeigt: 200,
-      maxWidth: 600
+      maxWidth: 600,
+      paddingTop: '3px',
+      paddingBottom: '3px',
+      paddingRight: '5px',
+      paddingLeft: '5px'
     }
   }
 
   return (
     <Card
       style={styles.list}>
-      
     </Card>
   )
 }
