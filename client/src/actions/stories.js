@@ -11,12 +11,6 @@ export function fetchTopStories() {
   }
 }
 
-export function fetchSavedStories() {
-  // return (dispatch) => {
-  //   return fetch('http://localhost:3000/users/:id/stories')
-  // }
-}
-
 export function saveStory() {
   return (dispatch) => {
     return fetch('http://localhost:3000/users')

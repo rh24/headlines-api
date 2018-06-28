@@ -1,19 +1,19 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchUser(username) {
-  return (dispatch) => {
-    return fetch(`http://localhost:3001/users/`)
-      .then(resp => resp.json())
-      .then(json => json.filter((user, idx) => user.username === username))
-      .then(user => {
-        if (user.length !== 0) {
-          return dispatch({ type: 'FETCH_USER_STORIES', user });
-        } else {
-          return "no match.";
-        }
-      })
-  }
-}
+// export function fetchUser(username) {
+//   return (dispatch) => {
+//     return fetch(`http://localhost:3001/users/`)
+//       .then(resp => resp.json())
+//       .then(json => json.filter((user, idx) => user.username === username))
+//       .then(user => {
+//         if (user.length !== 0) {
+//           return dispatch({ type: 'FETCH_USER_STORIES', user: user });
+//         } else {
+//           return "no match.";
+//         }
+//       })
+//   }
+// }
 
 export function fetchUserStories(userId) {
   return (dispatch) => {

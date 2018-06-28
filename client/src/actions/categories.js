@@ -1,8 +1,8 @@
 // this will fetch User's persisted categories. fetchAllCategories() will only trigger when a new user is created.
 
-export function fetchUserCategories() {
+export function fetchSavedCategories(userId) {
   return (dispatch) => {
-    return fetch()
+    return fetch(`http://localhost:3001/users/${userId}`)
   }
 }
 
