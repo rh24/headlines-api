@@ -35,7 +35,6 @@ export function createUser(username) {
   };
 
   return (dispatch) => {
-    // debugger;
     return fetch(`http://localhost:3001/users/`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
