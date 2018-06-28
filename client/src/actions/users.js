@@ -46,3 +46,9 @@ export function createUser(username) {
       .then(user => dispatch({ type: 'SET_USER_STATE', user: user }));
   };
 }
+
+export function resetUser() {
+  return (dispatch) => {
+    dispatch({ type: 'RESET_USER_STATE', user: null });
+  }
+}
