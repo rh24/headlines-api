@@ -24,6 +24,6 @@ export function createUser(username) {
     return fetch(`http://localhost:3001/users/`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      .then(user => dispatch({ type: 'SUGGEST_CATEGORIES', user: user }))
+      .then(user => dispatch({ type: 'SET_USER_STATE', user: user }))
   }
 }
