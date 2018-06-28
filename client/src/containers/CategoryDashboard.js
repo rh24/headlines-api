@@ -2,6 +2,7 @@
 // <CategoryButton /> will be a child, stateless functional/presentation component.
 // Pass in the button click handler events as props to <CategoryButton />
 import CategoryChip from '../components/CategoryChip';
+import CategoryNav from '../components/CategoryNav';
 import { fetchAllCategories } from '../actions/categories';
 import { connect } from 'react-redux';
 
@@ -21,12 +22,9 @@ class CategoryDashboard extends Component {
   }
 
   render() {
-    const categories = this.props.categories.map((category, idx) => <CategoryChip key={idx} category={category} />);
-
-
     return (
       <div className="category-dashboard">
-        {categories}
+        <CategoryNav categories={this.props.categories} />
       </div>
     )
   }
