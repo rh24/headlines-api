@@ -48,10 +48,10 @@ class StoryCard extends Component {
   }
 
   // Use the below method to post to local API.
-  // handleSave = (event) => {
-  //   event.stopPropagation();
-  //   console.log("save me!")
-  // }
+  handleSave = (event) => {
+    event.stopPropagation();
+    console.log("save me!")
+  }
 
   render() {
     // const { classes } = this.props;
@@ -60,7 +60,7 @@ class StoryCard extends Component {
     const renderCard = () => {
       if (this.state.mousedOver) {
         return (
-          <HoverCard story={this.props.story}>
+          <HoverCard story={this.props.story} handleSave={(event) => this.handleSave(event)}>
           </HoverCard>
         );
       } else {

@@ -3,14 +3,9 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
 const SaveButton = (props) => {
-  const handleSave = (event) => {
-    event.stopPropagation();
-    console.log('hi');
-  };
-
   return (
     <div className="favorite">
-      <Button onClick={(event) => handleSave(event)}>Save Story</Button>
+      <Button onClick={(event) => props.handleSave(event)}>Save Story</Button>
     </div>
   )
 }

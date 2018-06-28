@@ -22,13 +22,14 @@ const styles = {
 
 const HoverCard = (props) => {
   const { urlToImage, title, url, source, description, publishedAt, author } = props.story;
+  const handleSave = props.handleSave;
 
   return (
     <Card style={styles.card}>
       <CardContent>
         <h2>{title}</h2>
         <p>{description}</p>
-        <SaveButton story={props.story} />
+        <SaveButton story={props.story} handleSave={handleSave}/>
       </CardContent>
     </Card>
   )
