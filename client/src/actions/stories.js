@@ -30,7 +30,10 @@ export function saveStory(story) {
   };
 
   return (dispatch) => {
-    return fetch('http://localhost:3000/users')
+    return fetch('http://localhost:3000/users', args)
+      .then(resp => resp.json())
+      .catch(error => console.log(error))
+      .then(story => dispatch({ type: 'UPDATE_USER_STORIES', stories: story }))
   }
 }
 
