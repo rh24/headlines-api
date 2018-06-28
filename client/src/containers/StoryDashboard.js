@@ -36,7 +36,6 @@ class StoryDashboard extends React.Component {
 function mapDispatchToProps(dispatch) {}
 
 function mapStateToProps(state) {
-  // debugger;
   return {savedStories: state.stories}
 }
 

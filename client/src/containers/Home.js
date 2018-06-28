@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchTopStories } from '../actions/stories';
-import { createUser, fetchUserStories } from '../actions/users';
+import { createUser, fetchUserStories, fetchUser } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -26,9 +26,11 @@ class Home extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let username = this.state.username;
     // username is value produced by form input, which is handled on change.
     // When is the state mapped to props? Does it happen on change as well?
+    let username = this.state.username;
+    // this.props.fetchUser(username);
+
     fetch('http://localhost:3001/users')
       .then(resp => resp.json())
       .then(users => users.find((user, idx) => user.username === username))
@@ -42,10 +44,10 @@ class Home extends React.Component {
         this.setState({
           username: username,
           loggedIn: true,
-        })
+        });
       })
+    }
     // Once they log in, if they are a new user, I will take them to the category dashboard to suggest favorite topics.
-  }
 
   handleClick = () => {
     this.setState({
@@ -103,7 +105,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {username: state.username, stories: state.stories}
+  return {username: state.user.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser})(Home);
+export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser})(Home);

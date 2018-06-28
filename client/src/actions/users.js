@@ -9,12 +9,21 @@ export function fetchUserStories(userId) {
   };
 }
 
+// I put the below method within my submit handler in the Home component because the fetch happens asynchronously.
+
 export function fetchUser(username) {
   return (dispatch) => {
     return fetch(`http://localhost:3001/users`)
       .then(resp => resp.json())
       .then(userArray => userArray.find((user) => user.username === username))
-      .then(user => dispatch({ type: 'SET_USER_STATE', user: user }));
+      .then(user => {
+        // debugger;
+        if (!!user) {
+          dispatch({ type: 'SET_USER_STATE', user: user });
+        } else {
+          createUser(username);
+        }
+      });
   };
 }
 
@@ -30,6 +39,9 @@ export function createUser(username) {
   };
 
   return (dispatch) => {
+    // debugger;
+    // this debugger never hits if I call createUser(username) from my fetchUser(username) function. It DOES hit if I put my fetchUser function direction into my submit handler in the Home component.
+
     return fetch(`http://localhost:3001/users/`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
