@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import SaveButton from './SaveButton';
+import UnsaveButton from './UnsaveButton';
 
 
 const styles = {
@@ -22,14 +23,26 @@ const styles = {
 
 const HoverCard = (props) => {
   const { urlToImage, title, url, source, description, publishedAt, author } = props.story;
-  const handleSave = props.handleSave;
+  // conditionally render save vs unsave
+  const toggleSave = () => {
+    if (props.saved) {
+      // debugger;
+      return (
+        <UnsaveButton handleRemove={(event) => props.handleRemove(event)} />
+      );
+    } else {
+      return (
+        <SaveButton story={props.story} handleSave={(event) => props.handleSave(event)} />
+      )
+    }
+  };
 
   return (
     <Card style={styles.card}>
       <CardContent>
         <h2>{title}</h2>
         <p>{description}</p>
-        <SaveButton story={props.story} handleSave={(event) => handleSave(event)}/>
+        { toggleSave() }
       </CardContent>
     </Card>
   )

@@ -34,6 +34,7 @@ class StoryCard extends Component {
 
     this.state = {
       mousedOver: false,
+      // saved: false,
     }
   }
 
@@ -51,17 +52,31 @@ class StoryCard extends Component {
   handleSave = (event) => {
     event.stopPropagation();
     this.props.saveStory(this.props.username, this.props.userId, this.props.story);
+    // this.setState({
+    //   saved: true,
+    // })
+  }
+
+  handleRemove = (event) => {
+    event.stopPropagation();
+    console.log('bye')
+    this.props.removeStory(this.props.story.id);
+    // this.setState({
+    //   saved: false,
+    // })
   }
 
   render() {
-    // debugger;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
 
     const renderCard = () => {
       if (this.state.mousedOver) {
         return (
-          <HoverCard story={this.props.story} handleSave={(event) => this.handleSave(event)}>
-          </HoverCard>
+          <HoverCard
+          story={this.props.story}
+          handleSave={(event) => this.handleSave(event)}
+          handleRemove={(event) => this.handleRemove(event)}
+          saved={this.props.saved} />
         );
       } else {
         return ([

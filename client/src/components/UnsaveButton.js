@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 const UnsaveButton = (props) => {
   return (
     <div className="favorite">
-      <Button onClick={(event) => props.handleSave(event)}>Remove Story</Button>
+      <Button onClick={(event) => props.handleRemove(event)}>Remove Story</Button>
     </div>
   )
 }

@@ -40,4 +40,8 @@ export function saveStory(username, userId, story) {
   }
 }
 
+export function removeStory(storyId) {
+  
+}
+
 // for some reason, even after changing the request parameter for pageSize to equal 50, only 20 results display on the page.

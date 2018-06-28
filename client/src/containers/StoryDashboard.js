@@ -23,8 +23,7 @@ class StoryDashboard extends React.Component {
   }
 
   render() {
-    const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
-    // render log in if no user state.
+    const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} saved={true}/>);
 
     return (
       <div className="story-dashboard">
