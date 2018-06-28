@@ -1,4 +1,6 @@
-export function suggestCatgories() {
+// this will fetch User's persisted categories. fetchAllCategories() will only trigger when a new user is created.
+
+export function fetchUserCategories() {
   return (dispatch) => {
     return fetch()
   }

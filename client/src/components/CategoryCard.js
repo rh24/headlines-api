@@ -1,6 +1,5 @@
 // <CategoryCard /> should have the name of the category lining the top of each card
 // Children <HeadlineCard />.
-
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import HeadlineCard from './HeadlineCard';
