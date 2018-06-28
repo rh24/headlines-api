@@ -1,23 +1,21 @@
 class StoriesController < ApplicationController
-  # before_action :set_user
-  # before_action :set_user, only: [:show, :destroy, :new, :create, :index]
+  before_action :set_user, only: [:show, :destroy, :new, :create, :index]
 
   def new
   end
 
   def create
     story = Story.new(story_params)
-    if story.save
-      binding.pry
-      user_story = UserStory.create(story: story, user: @user)
+    user = User.find_by(id: params[:user_id].to_i)
+    user_story = UserStory.new(story: story, user: user)
+    if story.save && user_story.save
       render json: story, status: 200
     else
-      render json: { message: story.errors }, status: 400
+      render json: { message: user_story.errors }, status: 400
     end
   end
 
   def show
-
   end
 
   def index
@@ -32,7 +30,6 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-
   end
 
   private
@@ -41,7 +38,7 @@ class StoriesController < ApplicationController
     params.require(:story).permit(:author, :title, :description, :url, :url_to_image, :published_at)
   end
 
-  # def set_user
-  #   @user = User.find_by(id: params[:id])
-  # end
+  def set_user
+    @user = User.find_by(id: params[:user_id])
+  end
 end

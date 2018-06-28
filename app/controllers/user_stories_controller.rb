@@ -5,7 +5,7 @@ class UserStoriesController < ApplicationController
   end
 
   def create
-
+    
   end
 
   def index
