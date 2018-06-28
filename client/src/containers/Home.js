@@ -55,7 +55,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
+    const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} username={this.props.username} userId={this.props.userId} />);
 
     const logIn = () => {
       if (!this.props.username) {
@@ -100,7 +100,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {username: state.user.username, stories: state.stories}
+  return {username: state.user.username, userId: state.user.id, stories: state.stories}
 }
+// I want to pass in the entire user object, but I hit errors.
 
 export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser, resetUser})(Home);

@@ -50,11 +50,10 @@ class StoryCard extends Component {
   // Use the below method to post to local API.
   handleSave = (event) => {
     event.stopPropagation();
-    this.props.saveStory(this.props.story);
+    this.props.saveStory(this.props.username, this.props.userId, this.props.story);
   }
 
   render() {
-    // const { classes } = this.props;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
 
     const renderCard = () => {

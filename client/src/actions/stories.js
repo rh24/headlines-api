@@ -11,7 +11,8 @@ export function fetchTopStories() {
   }
 }
 
-export function saveStory(story) {
+export function saveStory(username, userId, story) {
+  debugger;
   const args = {
     method: 'POST',
     mode: 'cors',
@@ -22,7 +23,7 @@ export function saveStory(story) {
     body: JSON.stringify({
       author: story.author,
       title: story.title,
-      description: story.description
+      description: story.description,
       url: story.url,
       url_to_image: story.urlToImage,
       published_at: story.publishedAt
@@ -30,7 +31,7 @@ export function saveStory(story) {
   };
 
   return (dispatch) => {
-    return fetch('http://localhost:3000/users', args)
+    return fetch(`http://localhost:3000/users/${userId}/stories`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
       .then(story => dispatch({ type: 'UPDATE_USER_STORIES', stories: story }))
