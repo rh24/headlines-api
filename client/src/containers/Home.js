@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchTopStories } from '../actions/stories';
-import { createUser, fetchUserStories, fetchUser } from '../actions/users';
+import { createUser, fetchUserStories } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -108,4 +108,4 @@ function mapStateToProps(state) {
   return {username: state.user.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser})(Home);
+export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser})(Home);
