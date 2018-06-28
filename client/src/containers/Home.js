@@ -38,8 +38,14 @@ class Home extends React.Component {
       .then(user => {
         if (!user) {
           return this.props.createUser(username);
+          this.setState({
+            loggedIn: true,
+          })
         } else {
           return this.props.fetchUser(username);
+          this.setState({
+            loggedIn: true,
+          })
         }
       });
   }
@@ -60,7 +66,7 @@ class Home extends React.Component {
     const storyCards = this.props.stories.map((story, idx) => <StoryCard key={idx} story={story} />);
 
     const logIn = () => {
-      if (!this.state.loggedIn) {
+      if (!this.props.username) {
         return ([
           <h3 key="heading">Enter your username: </h3>,
           <form
@@ -74,7 +80,9 @@ class Home extends React.Component {
           </form>
         ]);
       } else {
-        return null;
+        return (
+          <LoggedIn username={this.props.username} />
+        );
       }
     }
 
