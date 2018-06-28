@@ -1,8 +1,6 @@
 // StoryCard is basically a headlines card but styled to be bigger than a <HeadlinesCard />, which is a child of the <LocationCard /> component.
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import HoverCard from '../components/HoverCard';
 import SaveButton from '../components/SaveButton';
+import { saveStory } from '../actions/stories';
+import { connect } from 'react-redux';
 
 const styles = {
   contentBackground: {
@@ -50,7 +50,7 @@ class StoryCard extends Component {
   // Use the below method to post to local API.
   handleSave = (event) => {
     event.stopPropagation();
-    console.log("save me!")
+    this.props.saveStory(this.props.story);
   }
 
   render() {
@@ -99,8 +99,8 @@ function openInNewTab(url) {
   win.focus();
 }
 
-// StoryCard.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+function mapStateToProps(state) {}
 
-export default withStyles(styles)(StoryCard);
+function mapDispatchToProps(dispatch) {}
+
+export default connect(mapStateToProps, {saveStory})(StoryCard);

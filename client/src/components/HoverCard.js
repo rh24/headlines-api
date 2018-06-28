@@ -29,7 +29,7 @@ const HoverCard = (props) => {
       <CardContent>
         <h2>{title}</h2>
         <p>{description}</p>
-        <SaveButton story={props.story} handleSave={handleSave}/>
+        <SaveButton story={props.story} handleSave={(event) => handleSave(event)}/>
       </CardContent>
     </Card>
   )

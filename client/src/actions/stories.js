@@ -11,7 +11,24 @@ export function fetchTopStories() {
   }
 }
 
-export function saveStory() {
+export function saveStory(story) {
+  const args = {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      author: story.author,
+      title: story.title,
+      description: story.description
+      url: story.url,
+      url_to_image: story.urlToImage,
+      published_at: story.publishedAt
+    })
+  };
+
   return (dispatch) => {
     return fetch('http://localhost:3000/users')
   }
