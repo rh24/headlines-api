@@ -44,7 +44,7 @@ export function createUser(username) {
 
   return (dispatch) => {
     // debugger;
-    // this debugger never hits if I call createUser(username) from my fetchUser(username) function. It DOES hit if I put my fetchUser function direction into my submit handler in the Home component.
+    // this debugger never hits if I call createUser(username) from my fetchUser(username) function. It DOES hit if I put my fetchUser function directly into my submit handler in the Home component.
 
     return fetch(`http://localhost:3001/users/`, args)
       .then(resp => resp.json())

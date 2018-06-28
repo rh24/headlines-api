@@ -36,16 +36,24 @@ export function saveStory(username, userId, story) {
     return fetch(`http://localhost:3001/users/${userId}/stories`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      .then(story => dispatch({ type: 'ADD_STORY', stories: story }))
+      .then(story => dispatch({ type: 'ADD_STORY', stories: story, userId: userId }))
   }
 }
 
-export function removeStory(storyId, userId)
+export function removeStory(storyId, userId) {
+  const args = {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  };
+
   return (dispatch) => {
-    return fetch(`http://localhost:3001/users/${userId}/stories/${storyId}`, {method: 'DELETE'})
+    return fetch(`http://localhost:3001/users/${userId}/stories/${storyId}`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      .then(story => dispatch({ type: 'REMOVE_STORY', story: story}))
+      .then(story => dispatch({ type: 'REMOVE_STORY', story: story, userId: userId }))
   }
   // Do I also have to delete the user_story join table data?
   // I tried doing the above directly in the stories controller.

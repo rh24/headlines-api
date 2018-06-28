@@ -26,7 +26,6 @@ const HoverCard = (props) => {
   // conditionally render save vs unsave
   const toggleSave = () => {
     if (props.saved) {
-      // debugger;
       return (
         <UnsaveButton handleRemove={(event) => props.handleRemove(event)} />
       );

@@ -3,6 +3,7 @@ export default function savedStoriesReducer(state = [], action) {
     case "FETCH_USER_STORIES":
       return action.savedStories;
     case "ADD_STORY":
+      debugger;
       return [...state, action.stories];
     case "REMOVE_STORY":
       const stories = state.filter((story, idx) => story.id !== action.story.id)

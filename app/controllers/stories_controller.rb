@@ -30,8 +30,8 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    story = Story.find(params[:story_id])
-    join_data = UserStory.where(user_id: params[:user_id], story_id: params[:story_id])
+    story = Story.find(params[:id])
+    join_data = UserStory.where(user_id: params[:user_id], story_id: params[:id])
     story.destroy
     join_data.destroy
   end

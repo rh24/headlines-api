@@ -18,12 +18,12 @@ class StoryDashboard extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchUserStories(this.props.user);
   }
 
   render() {
-    const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} saved={true}/>);
+    // debugger;
+    const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} saved={true} user={this.props.user} />);
 
     return (
       <div className="story-dashboard">

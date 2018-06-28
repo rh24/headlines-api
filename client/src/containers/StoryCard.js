@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import HoverCard from '../components/HoverCard';
 import SaveButton from '../components/SaveButton';
-import { saveStory } from '../actions/stories';
+import { saveStory, removeStory } from '../actions/stories';
 import { connect } from 'react-redux';
 
 const styles = {
@@ -60,7 +60,8 @@ class StoryCard extends Component {
   handleRemove = (event) => {
     event.stopPropagation();
     console.log('bye')
-    this.props.removeStory(this.props.story.id, this.props.userId);
+    this.props.removeStory(this.props.story.id, this.props.user.id);
+    // debugger;
     // this.setState({
     //   saved: false,
     // })
@@ -116,4 +117,4 @@ function openInNewTab(url) {
 
 function mapDispatchToProps(dispatch) {}
 
-export default connect(null, {saveStory})(StoryCard);
+export default connect(null, {saveStory, removeStory})(StoryCard);
