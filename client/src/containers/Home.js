@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { fetchTopStories } from '../actions/stories';
-import { createUser, fetchUserStories, fetchUser } from '../actions/users';
+import { createUser, fetchUserStories, fetchUser, resetUser } from '../actions/users';
 import StoryCard from './StoryCard';
 import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
@@ -16,8 +16,8 @@ class Home extends React.Component {
     this.state = {
       username: '',
       stories: [],
-      loggedIn: false,
     }
+    // If I'm mapping all of my state to props and using redux to manage my state, is having a state object in my component redundant?
   }
 
   componentDidMount() {
@@ -38,22 +38,14 @@ class Home extends React.Component {
       .then(user => {
         if (!user) {
           return this.props.createUser(username);
-          this.setState({
-            loggedIn: true,
-          })
         } else {
           return this.props.fetchUser(username);
-          this.setState({
-            loggedIn: true,
-          })
         }
       });
   }
 
   handleClick = () => {
-    this.setState({
-      username: '',
-    });
+    this.props.resetUser();
   }
 
   handleChange = (event) => {
@@ -81,7 +73,7 @@ class Home extends React.Component {
         ]);
       } else {
         return (
-          <LoggedIn username={this.props.username} />
+          <LoggedIn username={this.props.username} handleClick={this.props.resetUser}/>
         );
       }
     }
@@ -111,4 +103,4 @@ function mapStateToProps(state) {
   return {username: state.user.username, stories: state.stories}
 }
 
-export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser})(Home);
+export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser, resetUser})(Home);

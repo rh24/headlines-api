@@ -5,7 +5,7 @@ const LoggedIn = (props) => {
   // debugger;
   return ([
     <p>Logged in as <strong>{props.username}</strong>.</p>,
-    <Button onClick={() => this.handleClick()}>
+    <Button onClick={() => props.handleClick()}>
       Switch Account
     </Button>
   ]);
