@@ -32,7 +32,7 @@ export function saveStory(username, userId, story) {
   };
 
   return (dispatch) => {
-    // I need to both create a new source and a new story
+    // I'd need to both create a new source and a new story if on my API side I indicate that stories belong to a source, so for now, I will leave the source data as an object.
     return fetch(`http://localhost:3001/users/${userId}/stories`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
