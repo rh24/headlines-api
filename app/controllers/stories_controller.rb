@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   # before_action :set_user
-  before_action :set_story, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :destroy, :new, :create]
 
   def new
   end
