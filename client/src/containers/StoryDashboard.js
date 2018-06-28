@@ -18,8 +18,8 @@ class StoryDashboard extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
-    this.props.fetchUserStories();
+    // debugger;
+    this.props.fetchUserStories(this.props.user);
   }
 
   render() {

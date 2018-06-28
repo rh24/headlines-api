@@ -1,11 +1,17 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchUserStories(userId) {
+export function fetchUserStories(user) {
   return (dispatch) => {
-    return fetch(`http://localhost:3001/users/${userId}`)
+    return fetch(`http://localhost:3001/users/${user.id}`)
       .then(resp => resp.json())
-      .then(userArray => userArray.find((user) => user.id === userId))
-      .then(user => dispatch({ type: 'FETCH_USER_STORIES', stories: user.stories }));
+      .then(userArray => userArray.find((user) => user.id === user.id))
+      .then(user => {
+        if (!!user) {
+          dispatch({ type: 'FETCH_USER_STORIES', stories: user.stories })
+        } else {
+          alert('please, type in username in homepage');
+        }
+      });
   };
 }
 

@@ -1,6 +1,10 @@
 class UserStoriesController < ApplicationController
 
+  def new
+
+  end
+
   def create
-    
+
   end
 end

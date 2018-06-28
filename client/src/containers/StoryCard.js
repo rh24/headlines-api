@@ -99,8 +99,6 @@ function openInNewTab(url) {
   win.focus();
 }
 
-function mapStateToProps(state) {}
-
 function mapDispatchToProps(dispatch) {}
 
-export default connect(mapStateToProps, {saveStory})(StoryCard);
+export default connect(null, {saveStory})(StoryCard);
