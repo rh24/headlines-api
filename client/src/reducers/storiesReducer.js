@@ -8,7 +8,8 @@ export default function storiesReducer(state = [], action) {
       return action.stories;
     case 'UPDATE_USER_STORIES':
       console.log("i'm being updated");
-      return [...state, ...action.stories];
+      debugger;
+      return [...state, action.stories];
     default:
       return state;
   }

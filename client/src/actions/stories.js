@@ -12,7 +12,7 @@ export function fetchTopStories() {
 }
 
 export function saveStory(username, userId, story) {
-  debugger;
+  // debugger;
   const args = {
     method: 'POST',
     mode: 'cors',
@@ -27,6 +27,7 @@ export function saveStory(username, userId, story) {
       url: story.url,
       url_to_image: story.urlToImage,
       published_at: story.publishedAt,
+      source_id: 1
     })
   };
 

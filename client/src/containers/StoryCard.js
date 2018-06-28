@@ -54,6 +54,7 @@ class StoryCard extends Component {
   }
 
   render() {
+    // debugger;
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
 
     const renderCard = () => {
