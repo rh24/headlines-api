@@ -6,7 +6,7 @@ export default function savedStoriesReducer(state = [], action) {
       return [...state, action.stories];
     case 'UPDATE_USER_STORIES':
       console.log("i'm being updated");
-      debugger;
+      // debugger;
       return [...state, action.stories];
     default:
       return state;
