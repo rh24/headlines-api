@@ -31,8 +31,8 @@ class StoriesController < ApplicationController
 
   def destroy
     story = Story.find(params[:id])
-    # join_data = UserStory.where(user_id: params[:user_id], story_id: params[:id])
     story.destroy
+    # join_data = UserStory.where(user_id: params[:user_id])
     # join_data.destroy
   end
 
@@ -40,6 +40,11 @@ class StoriesController < ApplicationController
 
   def story_params
     params.require(:story).permit(:author, :title, :description, :url, :url_to_image, :published_at)
+  end
+
+  def destroy_join_data
+    join_data = UserStory.where(user_id: params[:user_id], story_id: params[:id])
+    join_data.destroy
   end
 
   def set_user

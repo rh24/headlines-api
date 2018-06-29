@@ -53,10 +53,10 @@ export function removeStory(storyId, userId) {
     return fetch(`http://localhost:3001/users/${userId}/stories/${storyId}`, args)
       .then(resp => resp.json())
       .catch(error => console.log(error))
-      .then(story => dispatch({ type: 'REMOVE_STORY', storyId: storyId, userId: userId }))
+      .then(story => dispatch({ type: 'REMOVE_STORY', storyId: storyId, userId: userId }));
   }
   // Do I also have to delete the user_story join table data?
-  // I tried doing the above directly in the stories controller.
+  // I tried doing the above directly in the stories controller, but it doesn't delete the join table data
 }
 
 // for some reason, even after changing the request parameter for pageSize to equal 50, only 20 results display on the page.
