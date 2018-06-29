@@ -7,7 +7,7 @@ const CategoryChip = (props) => {
   };
 
   return (
-    <Chip key={props.key}
+    <Chip id={props.id}
     label={props.name}
     onDelete={() => handleDelete()} />
   )
