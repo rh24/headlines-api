@@ -2,7 +2,7 @@ class UserCategoriesController < ApplicationController
   before_action :set_user
 
   def create
-    user_category = UserCategory.new(user_category_params)
+    user_category = UserCategory.find_or_create_by(user_category_params)
     if user_category.save
       render json: user_category, status: 200
     else
