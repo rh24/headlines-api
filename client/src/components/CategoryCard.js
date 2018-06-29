@@ -21,7 +21,7 @@ const CategoryCard = (props) => {
     }
   }
 
-  const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} />);
+  const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} user={props.user} />);
 
   return (
     <div style={styles.listItem}>

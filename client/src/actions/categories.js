@@ -30,7 +30,7 @@ export function fetchAllCategories() {
   }
 }
 
-export function saveCategory(userId, categoryId) {
+export function saveCategory(user, categoryName) {
   // needs to post to categories that belong to user
   // user_category data needs to be created in the controller
   const args = {
@@ -39,13 +39,16 @@ export function saveCategory(userId, categoryId) {
     headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify({
+      name: categoryName
+    })
   };
 
   return (dispatch) => {
-    return fetch(`http://localhost:3001/categories`, args) {
-      
-    }
+    return fetch(`http://localhost:3001/categories`, args)
+      .then(resp => resp.json())
+      .then()
   }
 }
 

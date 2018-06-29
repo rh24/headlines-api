@@ -4,7 +4,7 @@
 import CategoryChip from '../components/CategoryChip';
 import CategoryNav from '../components/CategoryNav';
 import { fetchAllCategories, fetchCategoryStories, saveCategory } from '../actions/categories';
-// import { fetchUser } from '../actions/users';
+// import { fetchUser }  from '../actions/users';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import CategoryCard from '../components/CategoryCard';
@@ -28,11 +28,14 @@ class CategoryDashboard extends Component {
     prevProps.categoryStories !== this.props.categoryStories;
   }
 
-  handleClick = (categoryName) => {
-    console.log('Category:', categoryName)
+  handleClick = (user, categoryName) => {
+    console.log('Category:', categoryName, 'User:', user.username)
     // fetch News API category and map dispatch to props
-    this.props.fetchCategoryStories(categoryName)
-    this.props.saveCategory(categoryName);
+    const fetchCategoryStories = new Promise((user, categoryName) => {
+      this.props.fetchCategoryStories(categoryName)
+    });
+
+    fetchCategoryStories.then(() => this.props.saveCategory(user, categoryName));
   }
 
   handleDelete = () => {
@@ -40,9 +43,10 @@ class CategoryDashboard extends Component {
   }
 
   render() {
-    const { categoryStories } = this.props;
-    const categoryCards = Object.keys(this.props.categoryStories).map((categoryName, idx) => {
-      return <CategoryCard key={idx} name={categoryName} stories={this.props.categoryStories[`${categoryName}`]} />
+    const { categories, categoryStories, user, savedCategories } = this.props;
+
+    const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
+      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user}/>
     });
     // Why does this not render repeats?
     // It also renders in reverse order if i start clicking from tech -> business
@@ -51,7 +55,8 @@ class CategoryDashboard extends Component {
     return (
       <div className="category-dashboard">
         <CategoryNav
-          categories={this.props.categories}
+          user={user}
+          categories={categories}
           handleClick={this.handleClick}
           handleDelete={this.handleDelete} />
         <Grid container spacing={8}>
@@ -64,7 +69,7 @@ class CategoryDashboard extends Component {
 
 function mapStateToProps(state) {
   // debugger;
-  return {categories: state.categories, user: state.user, categoryStories: state.categoryStories};
+  return {categories: state.categories.categories, savedCategories: state.categories.savedCategories, user: state.user, categoryStories: state.categoryStories};
 }
 
 function mapDispatchToProps(dispatch) {}
