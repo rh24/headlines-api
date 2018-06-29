@@ -6,7 +6,9 @@ const HeadlineCard = (props) => {
   //   listItem
   // }
   return (
-
+    <Card>
+      <h1>{props.story.title}</h1>
+    </Card>
   )
 }
 

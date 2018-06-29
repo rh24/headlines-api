@@ -19,9 +19,14 @@ const CategoryCard = (props) => {
     }
   }
 
+  const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} />);
+
   return (
     <Card
       style={styles.list}>
+      { headlines }
     </Card>
   )
 }
+
+export default CategoryCard;
