@@ -21,4 +21,8 @@ export function fetchAllCategories() {
   }
 }
 
+export function saveCategory(userId, categoryId) {
+
+}
+
 // fetch stories from each category from News API.
