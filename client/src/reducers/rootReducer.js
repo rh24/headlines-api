@@ -5,6 +5,7 @@ import sourcesReducer from './sourcesReducer';
 import categoriesReducer from './categoriesReducer';
 import userReducer from './userReducer';
 import savedStoriesReducer from './savedStoriesReducer';
+import categoryStoriesReducer from './categoryStoriesReducer';
 
 const rootReducer = (state, action) => {
   if (action.type === 'RESET_USER_STATE') {
@@ -19,6 +20,7 @@ const appReducer = combineReducers({
   stories: storiesReducer,
   searchedStories: keywordReducer,
   savedStories: savedStoriesReducer,
+  categoryStories: categoryStoriesReducer,
   sources: sourcesReducer,
   categories: categoriesReducer
 })
