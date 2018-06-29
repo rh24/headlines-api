@@ -60,7 +60,7 @@ class StoryCard extends Component {
 
   render() {
     const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
-
+    // debugger;
     const renderCard = () => {
       if (this.state.mousedOver) {
         return (

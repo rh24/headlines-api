@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180628174116) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "news_api_id"
+    t.string "newsApiId"
     t.integer "category_id"
   end
 
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20180628174116) do
     t.string "title"
     t.text "description"
     t.string "url"
-    t.string "url_to_image"
-    t.string "published_at"
+    t.string "urlToImage"
+    t.string "publishedAt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "source"

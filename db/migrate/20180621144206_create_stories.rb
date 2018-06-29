@@ -6,8 +6,8 @@ class CreateStories < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :description
       t.string :url
-      t.string :url_to_image
-      t.string :published_at
+      t.string :urlToImage
+      t.string :publishedAt
 
       t.timestamps null: false
     end
