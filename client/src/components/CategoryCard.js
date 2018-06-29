@@ -22,17 +22,14 @@ const CategoryCard = (props) => {
       justify: 'center',
     }
   }
-
+// debugger;
   const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} user={props.user} />);
-
+  
   return (
     <div style={styles.listItem}>
       <Grid item>
         <Card
           style={styles.list}>
-          <CardContent>
-            <h1>{props.name}</h1>
-          </CardContent>
           { headlines }
         </Card>
       </Grid>

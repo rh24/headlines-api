@@ -46,6 +46,7 @@ class CategoryDashboard extends Component {
 
   render() {
     const { categories, categoryStories, user, savedCategories } = this.props;
+    // debugger;
 
     const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
       return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} />

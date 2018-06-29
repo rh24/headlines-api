@@ -8,7 +8,7 @@ const CategoryCardTitle = (props) => {
   return (
     <CardContent>
       <Typography>
-        <h1>{props.name}</h1>
+        <h1>{props.title}</h1>
       </Typography>
     </CardContent>
   )
