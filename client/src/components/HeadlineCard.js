@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import HearButton from './HeartButton';
+import HeartButton from './HeartButton';
 
 const HeadlineCard = (props) => {
   const styles = {
@@ -15,6 +15,9 @@ const HeadlineCard = (props) => {
       paddingBottom: '3px',
       paddingRight: '5px',
       paddingLeft: '5px'
+    },
+    heart: {
+      justify: 'flex-end'
     }
   };
 
@@ -32,9 +35,12 @@ const HeadlineCard = (props) => {
       <Card
         onClick={() => openHeadline(props.story)}>
         <h3>{props.story.title}</h3>
+        <HeartButton style={styles.heart}/>
       </Card>
     </Grid>
   )
 }
+// only render HeartButton on hover? I'm undecided about that.
+// justify doesn't seem to change alignment of component.
 
 export default HeadlineCard;

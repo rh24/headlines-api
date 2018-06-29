@@ -31,21 +31,14 @@ class CategoryDashboard extends Component {
     // https://stackoverflow.com/questions/22773920/can-promises-have-multiple-arguments-to-onfulfilled
     let promise = new Promise((resolve, reject) => resolve([user, category]));
     promise.then(([user, category]) => {
-      // debugger;
       return this.props.fetchCategoryStories(user, category)
     }).then((actionDispatch) => {
-        // debugger;
         this.props.saveCategory(actionDispatch.user, actionDispatch.category)
-        // debugger;
       });
   }
 
   handleDelete = () => {
     console.log('bye');
-  }
-
-  openHeadline = (story) => {
-    openInNewTab(story.url);
   }
 
   render() {

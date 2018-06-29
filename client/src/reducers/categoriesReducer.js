@@ -8,7 +8,12 @@ export default function categoriesReducer(state = {
     case "FETCH_USER_CATEGORIES":
       return Object.assign({}, state, {savedCategories: action.savedCategories});
 
-      // anything can be passed in from the action object, but when accessing the state, the returned data displays in components as `state.categories` due to how it's set up in the rootReducer. If you want to access the keys in the state object after mapping state to props, it must be like so: `state.categories.categories`.
+      /*
+      anything can be passed in from the action object, but when accessing the state, the returned data displays in components as `state.categories` due to how it's set up in the rootReducer:
+        { categories: categoriesReducer }
+      If you want to access the keys in the state object as represented in this reducer, after mapping state to props, it must be like so: `state.categories.categories` || `state.categories.savedCategories`.
+      */
+
     case "SAVE_CATEGORY":
       let match = state.savedCategories.filter((category) => category.name === action.category.name);
       if (!match.length) {

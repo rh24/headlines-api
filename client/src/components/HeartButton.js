@@ -3,9 +3,11 @@ import IconButton from 'material-ui/IconButton';
 import Heart from 'mui-icons/cmdi/heart';
 
 const HeartButton = () => {
-  <IconButton>
-    <Heart />
-  </IconButton>
+  return (
+    <IconButton>
+      <Heart />
+    </IconButton>
+  )
 }
 
 export default HeartButton;
