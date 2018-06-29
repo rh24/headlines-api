@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 const CategoryNav = (props) => {
-  const categoryChips = props.categories.map((category, idx) => <CategoryChip name={category.name} key={idx} id={category.id} />);
+  const categoryChips = props.categories.map((category, idx) => <CategoryChip name={category.name} key={idx} id={category.id} handleClick={props.handleClick}/>);
 
   const styles = {
     panel: {

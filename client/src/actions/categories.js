@@ -3,7 +3,9 @@
 export function fetchSavedCategories(userId) {
   return (dispatch) => {
     return fetch(`http://localhost:3001/users/${userId}`)
-  }
+      .then(resp => resp.json())
+      .then(user => dispatch({ type: 'FETCH_USER_CATEGORIES', savedCategories: user.categories }));
+  };
 }
 
 // below will fetch to local API in order to make Material UI chips.

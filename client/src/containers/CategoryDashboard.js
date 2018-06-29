@@ -12,19 +12,25 @@ class CategoryDashboard extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      categories: [],
-    }
+    // this.state = {
+    //   categories: [],
+    // }
   }
 
   componentDidMount() {
     this.props.fetchAllCategories();
   }
 
+  handleClick = () => {
+    console.log('category click')
+  }
+
   render() {
     return (
       <div className="category-dashboard">
-        <CategoryNav categories={this.props.categories} />
+        <CategoryNav
+          categories={this.props.categories}
+          handleClick={this.handleClick}/>
       </div>
     )
   }
