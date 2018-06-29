@@ -24,6 +24,11 @@ class Home extends React.Component {
     this.props.fetchTopStories();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    prevProps.username !== this.props.username
+    this.props.fetchTopStories();
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     // username is value produced by form input, which is handled on change.

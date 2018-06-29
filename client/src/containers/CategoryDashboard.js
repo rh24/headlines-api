@@ -23,6 +23,7 @@ class CategoryDashboard extends Component {
 
   handleClick = () => {
     console.log('category click')
+    // fetch News API category and map dispatch to props
   }
 
   handleDelete = () => {
