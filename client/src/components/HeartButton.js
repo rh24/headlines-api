@@ -2,10 +2,10 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import Heart from 'mui-icons/cmdi/heart';
 
-const HeartButton = () => {
+const HeartButton = (props) => {
   return (
     <IconButton>
-      <Heart />
+      <Heart onClick={(event) => props.handleSave(event)}/>
     </IconButton>
   )
 }

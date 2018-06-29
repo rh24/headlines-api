@@ -17,7 +17,8 @@ const HeadlineCard = (props) => {
       paddingLeft: '5px'
     },
     heart: {
-      justify: 'flex-end'
+      justify: 'flex-end',
+      hoverColor: 'red'
     }
   };
 
@@ -35,7 +36,7 @@ const HeadlineCard = (props) => {
       <Card
         onClick={() => openHeadline(props.story)}>
         <h3>{props.story.title}</h3>
-        <HeartButton style={styles.heart}/>
+        <HeartButton style={styles.heart} handleSave={(event) => props.handleSave(event)}/>
       </Card>
     </Grid>
   )
