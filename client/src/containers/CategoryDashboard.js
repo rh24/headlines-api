@@ -30,7 +30,7 @@ class CategoryDashboard extends Component {
     // const fetchCategoryStories = new Promise((user, categoryName) => {
       // this.props.fetchCategoryStories(categoryName)
     // });
-    let promise = new Promise((resolve, reject) => resolve('Success!'));
+    let promise = new Promise((resolve, reject) => resolve(categoryName));
     promise.then((categoryName) => this.props.fetchCategoryStories(categoryName)).then((user, categoryName) => this.props.saveCategory(user, categoryName));
 
     // fetchCategoryStories.then(() => this.props.saveCategory(user, categoryName));
