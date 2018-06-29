@@ -6,8 +6,9 @@ export default function categoriesReducer(state = [], action) {
       return action.savedCategories;
 
       // anything can be paseed in from the action object, but when accessing the state, the returned data displays in components as `state.categories` due to how it's set up in the rootReducer.
-      
     default:
       return state;
   }
 }
+
+// where should the "FETCH_CATEGORY_STORIES" action go?

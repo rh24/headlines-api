@@ -8,7 +8,7 @@ export function fetchSavedCategories(userId) {
   };
 }
 
-export function categoryStories(category) {
+export function fetchCategoryStories(category) {
   return (dispatch) => {
     return fetch(`https://newsapi.org/v2/top-headlines?category=${category.name}&pageSize=50&country=us&apiKey=${apiKey}`)
       .then(resp => resp.json())

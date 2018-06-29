@@ -6,7 +6,7 @@ const CategoryChip = (props) => {
     <Chip id={props.id}
     label={props.name}
     onDelete={() => props.handleDelete()}
-    onClick={() => props.handleClick()} />
+    onClick={() => props.handleClick(props.id)} />
   )
 }
 
