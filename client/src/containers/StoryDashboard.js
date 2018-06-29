@@ -10,11 +10,6 @@ import HoverCard from '../components/HoverCard';
 class StoryDashboard extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      savedStories: []
-      // the above is fetched from my localhost API.
-    }
   }
 
   componentDidMount() {
