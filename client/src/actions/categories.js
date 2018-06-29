@@ -8,12 +8,12 @@ export function fetchSavedCategories(userId) {
   };
 }
 
-export function fetchCategoryStories(user, categoryName) {
+export function fetchCategoryStories(user, category) {
   return (dispatch) => {
-    return fetch(`https://newsapi.org/v2/top-headlines?category=${categoryName}&pageSize=50&country=us&apiKey=${apiKey}`)
+    return fetch(`https://newsapi.org/v2/top-headlines?category=${category.name}&pageSize=50&country=us&apiKey=${apiKey}`)
       .then(resp => resp.json())
       .then(json => json.articles)
-      .then(stories => dispatch({ type: 'FETCH_CATEGORY_STORIES', category: categoryName, categoryStories: stories, user: user }))
+      .then(stories => dispatch({ type: 'FETCH_CATEGORY_STORIES', category: category.name, categoryStories: stories, user: user }))
   }
 }
 

@@ -4,6 +4,8 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import HeadlineCard from './HeadlineCard';
 import Grid from '@material-ui/core/Grid';
+import CategoryCardTitle from './CategoryCardTitle';
+import CardContent from '@material-ui/core/CardContent';
 
 const CategoryCard = (props) => {
   const styles = {
@@ -28,6 +30,9 @@ const CategoryCard = (props) => {
       <Grid item>
         <Card
           style={styles.list}>
+          <CardContent>
+            <h1>{props.name}</h1>
+          </CardContent>
           { headlines }
         </Card>
       </Grid>

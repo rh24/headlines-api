@@ -48,7 +48,7 @@ class CategoryDashboard extends Component {
     const { categories, categoryStories, user, savedCategories } = this.props;
 
     const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
-      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user}/>
+      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} />
     });
     // Why does this not render repeats?
     // It also renders in reverse order if i start clicking from tech -> business
