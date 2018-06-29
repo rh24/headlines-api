@@ -24,22 +24,20 @@ class CategoryDashboard extends Component {
     prevProps.categoryStories !== this.props.categoryStories;
   }
 
-  handleClick = (user, categoryName) => {
-    console.log('Category:', categoryName, 'User:', user.username)
+  handleClick = (user, categoryId) => {
+    console.log('Category id:', categoryId, 'User:', user.username)
     // fetch News API category and map dispatch to props
     // then persist the clicked category to user categories, POST to Rails API.
     // https://stackoverflow.com/questions/22773920/can-promises-have-multiple-arguments-to-onfulfilled
-    let promise = new Promise((resolve, reject) => resolve([user, categoryName]));
-    promise.then(([user, categoryName]) => {
+    let promise = new Promise((resolve, reject) => resolve([user, categoryId]));
+    promise.then(([user, categoryId]) => {
       // debugger;
-      return this.props.fetchCategoryStories(user, categoryName)
+      return this.props.fetchCategoryStories(user, categoryId)
     }).then((actionDispatch) => {
         // debugger;
         this.props.saveCategory(actionDispatch.user, actionDispatch.category)
         // debugger;
       });
-
-    // fetchCategoryStories.then(() => this.props.saveCategory(user, categoryName));
   }
 
   handleDelete = () => {

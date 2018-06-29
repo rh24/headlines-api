@@ -30,11 +30,13 @@ export function fetchAllCategories() {
   }
 }
 
-export function saveCategory(user, categoryName) {
+export function saveCategory(user, categoryId) {
+  // e.g. arguments:
   // user = {id: 1, username: "rebe", stories: Array(2), categories: Array(0)}
-  // needs to post to categories that belong to user
-  // user_category data needs to be created in the controller
+  // categoryName = "1"
   debugger;
+  // This method needs to POST to categories that belong to a specific user.
+  // user_category data needs to be created in the controller
   const args = {
     method: 'POST',
     mode: 'cors',
@@ -43,7 +45,8 @@ export function saveCategory(user, categoryName) {
     'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: categoryName
+      category_id: categoryId,
+      user_id: user.id
     })
   };
 
