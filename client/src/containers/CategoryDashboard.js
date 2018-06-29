@@ -23,6 +23,10 @@ class CategoryDashboard extends Component {
     this.props.fetchAllCategories();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    prevProps.categoryStories !== this.props.categoryStories;
+  }
+
   handleClick = (categoryName) => {
     console.log('Category:', categoryName)
     // fetch News API category and map dispatch to props
@@ -35,19 +39,23 @@ class CategoryDashboard extends Component {
 
   render() {
     const { categoryStories } = this.props;
-    // const categoryCards = Object.keys(this.props.categoryStories).map((categoryName, idx) => {
-    //   return <CategoryCard key={idx} name={categoryName} stories={this.props.categoryStories[`${categoryName}`]} />
-    // });
+    const categoryCards = Object.keys(this.props.categoryStories).map((categoryName, idx) => {
+      return <CategoryCard key={idx} name={categoryName} stories={this.props.categoryStories[`${categoryName}`]} />
+    });
+    // Why does this not render repeats?
+    // It also renders in reverse order if i start clicking from tech -> business
+    // I'm guessing because it's being rendered in order of id?
 
     // How can I give each <CategoryCard /> a key prop without an index from iterating over an array? Is it best practice to?
-    const categoryCards = () => {
-      for (let topic in categoryStories) {
-        if (categoryStories[topic].length !== 0) {
-          return <CategoryCard name={topic} stories={categoryStories[topic]} />
-        }
-      }
-    };
-    // debugger;
+
+    // const categoryCards = () => {
+    //   for (let topic in categoryStories) {
+    //     if (categoryStories[topic].length !== 0) {
+    //       <CategoryCard name={topic} stories={categoryStories[topic]} />
+    //     }
+    //   }
+    // };
+    // above only returns one category card at a time;
 
     return (
       <div className="category-dashboard">
@@ -55,7 +63,7 @@ class CategoryDashboard extends Component {
           categories={this.props.categories}
           handleClick={this.handleClick}
           handleDelete={this.handleDelete} />
-        { categoryCards() }
+        { categoryCards }
       </div>
     )
   }
