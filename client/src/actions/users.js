@@ -9,7 +9,7 @@ export function fetchUserStories(user) {
         if (!!user) {
           dispatch({ type: 'FETCH_USER_STORIES', savedStories: user.stories })
         } else {
-          alert('please, type in username in homepage');
+          alert('Please, type in username in homepage in order to save stories and view them.');
         }
       });
   };

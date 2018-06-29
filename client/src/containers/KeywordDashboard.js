@@ -36,24 +36,10 @@ class KeywordDashboard extends React.Component {
     })
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   this.setState({
-  //     text: '',
-  //     searchedStories: [],
-  //     searchComplete: true
-  //   })
-  // }
-
   render() {
     const { text, searchedStories, searchComplete } = this.props;
     const stories = this.props.searchedStories.map((story, idx) => <StoryCard key={idx} story={story} />);
     let keyword = this.props.text;
-
-    // if (stories.length != 0) {
-    //   heading = Results;
-    // } else if (stories.length === 0 && this.props.searchComplete === true) {
-    //   heading = <h1>No results found.</h1>;
-    // } // how to get this working?
 
     return (
       <div className="location-dashboard">
