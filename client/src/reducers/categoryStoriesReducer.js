@@ -10,7 +10,7 @@ export default function categoryStoriesReducer(state = {
   switch (action.type) {
     case "FETCH_CATEGORY_STORIES":
       for (let category in state) {
-        if (category === action.category) {
+        if (category === action.category.name) {
           state[`${action.category}`] = action.categoryStories;
         }
       }
