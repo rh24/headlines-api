@@ -14,10 +14,6 @@ import React, { Component } from 'react';
 class CategoryDashboard extends Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   categories: [],
-    // }
   }
 
   componentDidMount() {
