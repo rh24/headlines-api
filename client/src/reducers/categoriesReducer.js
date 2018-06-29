@@ -20,5 +20,3 @@ export default function categoriesReducer(state = {
       return state;
   }
 }
-
-// where should the "FETCH_CATEGORY_STORIES" action go?

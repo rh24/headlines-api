@@ -44,12 +44,16 @@ class CategoryDashboard extends Component {
     console.log('bye');
   }
 
+  openHeadline = (story) => {
+    openInNewTab(story.url);
+  }
+
   render() {
     const { categories, categoryStories, user, savedCategories } = this.props;
     // debugger;
 
     const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
-      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} />
+      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} openHeadline={this.openHeadline}/>
     });
     // Why does this not render repeats?
     // It also renders in reverse order if i start clicking from tech -> business
@@ -68,6 +72,11 @@ class CategoryDashboard extends Component {
       </div>
     )
   }
+}
+
+function openInNewTab(url) {
+  let win = window.open(url, '_blank');
+  win.focus();
 }
 
 function mapStateToProps(state) {

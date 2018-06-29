@@ -17,9 +17,19 @@ const HeadlineCard = (props) => {
     }
   };
 
+  const openHeadline = (story) => {
+    function openInNewTab(url) {
+      let win = window.open(url, '_blank');
+      win.focus();
+    }
+
+    openInNewTab(story.url);
+  }
+
   return (
     <Grid item style={styles.listItem}>
-      <Card>
+      <Card
+        onClick={() => openHeadline(props.story)}>
         <h3>{props.story.title}</h3>
       </Card>
     </Grid>
