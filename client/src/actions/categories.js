@@ -34,7 +34,7 @@ export function saveCategory(user, category) {
   // e.g. arguments:
   // user = {id: 1, username: "rebe", stories: Array(2), categories: Array(0)}
   // categoryName = "1"
-  debugger;
+  // debugger;
   // This method needs to POST to categories that belong to a specific user.
   // user_category data needs to be created in the controller
   const args = {

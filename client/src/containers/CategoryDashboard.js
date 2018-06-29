@@ -25,7 +25,7 @@ class CategoryDashboard extends Component {
   }
 
   handleClick = (user, category) => {
-    console.log('Category id:', category, 'User:', user.username)
+    console.log('Category object:', category, 'User:', user.username)
     // fetch News API category and map dispatch to props
     // then persist the clicked category to user categories, POST to Rails API.
     // https://stackoverflow.com/questions/22773920/can-promises-have-multiple-arguments-to-onfulfilled
