@@ -3,7 +3,7 @@
 // Pass in the button click handler events as props to <CategoryButton />
 import CategoryChip from '../components/CategoryChip';
 import CategoryNav from '../components/CategoryNav';
-import { fetchAllCategories } from '../actions/categories';
+import { fetchAllCategories, categoryStories } from '../actions/categories';
 // import { fetchUser } from '../actions/users';
 import { connect } from 'react-redux';
 
@@ -53,4 +53,4 @@ function mapDispatchToProps(dispatch) {}
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
 
-export default connect(mapStateToProps, {fetchAllCategories})(CategoryDashboard);
+export default connect(mapStateToProps, {fetchAllCategories, categoryStories })(CategoryDashboard);
