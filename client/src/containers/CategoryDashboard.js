@@ -3,7 +3,7 @@
 // Pass in the button click handler events as props to <CategoryButton />
 import CategoryChip from '../components/CategoryChip';
 import CategoryNav from '../components/CategoryNav';
-import { fetchAllCategories, fetchCategoryStories } from '../actions/categories';
+import { fetchAllCategories, fetchCategoryStories, saveCategory } from '../actions/categories';
 // import { fetchUser } from '../actions/users';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
@@ -32,6 +32,7 @@ class CategoryDashboard extends Component {
     console.log('Category:', categoryName)
     // fetch News API category and map dispatch to props
     this.props.fetchCategoryStories(categoryName)
+    this.props.saveCategory(categoryName);
   }
 
   handleDelete = () => {
@@ -46,17 +47,6 @@ class CategoryDashboard extends Component {
     // Why does this not render repeats?
     // It also renders in reverse order if i start clicking from tech -> business
     // I'm guessing because it's being rendered in order of id?
-
-    // How can I give each <CategoryCard /> a key prop without an index from iterating over an array? Is it best practice to?
-
-    // const categoryCards = () => {
-    //   for (let topic in categoryStories) {
-    //     if (categoryStories[topic].length !== 0) {
-    //       <CategoryCard name={topic} stories={categoryStories[topic]} />
-    //     }
-    //   }
-    // };
-    // above only returns one category card at a time;
 
     return (
       <div className="category-dashboard">
@@ -83,4 +73,4 @@ function mapDispatchToProps(dispatch) {}
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
 
-export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories})(CategoryDashboard);
+export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories, saveCategory})(CategoryDashboard);

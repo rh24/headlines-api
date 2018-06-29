@@ -31,7 +31,22 @@ export function fetchAllCategories() {
 }
 
 export function saveCategory(userId, categoryId) {
+  // needs to post to categories that belong to user
+  // user_category data needs to be created in the controller
+  const args = {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+    }
+  };
 
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/categories`, args) {
+      
+    }
+  }
 }
 
 // fetch stories from each category from News API.
