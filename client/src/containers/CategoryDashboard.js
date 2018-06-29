@@ -25,12 +25,17 @@ class CategoryDashboard extends Component {
     console.log('category click')
   }
 
+  handleDelete = () => {
+    console.log('bye');
+  }
+
   render() {
     return (
       <div className="category-dashboard">
         <CategoryNav
           categories={this.props.categories}
-          handleClick={this.handleClick}/>
+          handleClick={this.handleClick}
+          handleDelete={this.handleDelete} />
       </div>
     )
   }
