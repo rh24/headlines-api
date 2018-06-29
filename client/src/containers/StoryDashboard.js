@@ -23,7 +23,9 @@ class StoryDashboard extends React.Component {
     return (
       <div className="story-dashboard">
         <h1>Saved Stories</h1>
-        {savedStories}
+        <Grid container className="story-grid" spacing={8}>
+          {savedStories}
+        </Grid>
       </div>
     );
   }
