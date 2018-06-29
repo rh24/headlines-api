@@ -39,7 +39,7 @@ class StoriesController < ApplicationController
   private
 
   def story_params
-    params.require(:story).permit(:author, :title, :description, :url, :url_to_image, :published_at)
+    params.require(:story).permit(:author, :title, :description, :url, :urlToImage, :publishedAt)
   end
 
   def destroy_join_data

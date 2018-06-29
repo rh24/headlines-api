@@ -25,8 +25,8 @@ export function saveStory(username, userId, story) {
       title: story.title,
       description: story.description,
       url: story.url,
-      url_to_image: story.urlToImage,
-      published_at: story.publishedAt,
+      urlToImage: story.urlToImage,
+      publishedAt: story.publishedAt,
       source: story.source.name
     })
   };
