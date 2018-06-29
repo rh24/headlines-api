@@ -46,7 +46,7 @@ export function saveCategory(user, categoryName) {
   };
 
   return (dispatch) => {
-    // I'm going to post to user_categories because I've already seeded the db with all the categories my app will ever have. `/users/:id` will show which categories users have saved based on the relatinoship it has with the join model data.
+    // I was going to post to user_categories because I've already seeded the db with all the categories my app will ever have. `/users/:id` will show which categories users have saved based on the relatinoship it has with the join model data. However, I can't access the current user's id in my user_categories controller.
     return fetch(`http://localhost:3001/user_categories`, args)
       .then(resp => resp.json())
       .then()
