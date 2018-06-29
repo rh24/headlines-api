@@ -9,9 +9,14 @@ export default function categoryStoriesReducer(state = {
 }, action) {
   switch (action.type) {
     case "FETCH_CATEGORY_STORIES":
-      const category = action.category;
-      debugger;
-      return Object.assign({}, state, { category: action.categoryStories });
+      // debugger;
+      for (let category in state) {
+        if (category === action.category) {
+          state[`${action.category}`] = action.categoryStories;
+        }
+      }
+
+      return { ...state };
     default:
       return state;
   }
