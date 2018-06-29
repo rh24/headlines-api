@@ -1,4 +1,4 @@
-// this will fetch User's persisted categories. fetchAllCategories() will only trigger when a new user is created.
+const apiKey = '7b48baa7e48541b9af219e981533d442';
 
 export function fetchSavedCategories(userId) {
   return (dispatch) => {
@@ -6,6 +6,15 @@ export function fetchSavedCategories(userId) {
       .then(resp => resp.json())
       .then(user => dispatch({ type: 'FETCH_USER_CATEGORIES', savedCategories: user.categories }));
   };
+}
+
+export function categoryStories(category) {
+  return (dispatch) => {
+    return fetch(`https://newsapi.org/v2/top-headlines?category=${category.name}&pageSize=50&country=us&apiKey=${apiKey}`)
+      .then(resp => resp.json())
+      .then(json => json.articles)
+      .then(stories => dispatch({ type: 'FETCH_CATEGORY_STORIES', categoryStories: stories }))
+  }
 }
 
 // below will fetch to local API in order to make Material UI chips.

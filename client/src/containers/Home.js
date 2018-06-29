@@ -16,6 +16,7 @@ class Home extends React.Component {
     this.state = {
       username: '',
       stories: [],
+      counter: 0,
     }
     // If I'm mapping all of my state to props and using redux to manage my state, is having a state object in my component redundant?
   }
@@ -24,10 +25,9 @@ class Home extends React.Component {
     this.props.fetchTopStories();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    prevProps.username !== this.props.username
-    this.props.fetchTopStories();
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   this.props.fetchTopStories();
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault();

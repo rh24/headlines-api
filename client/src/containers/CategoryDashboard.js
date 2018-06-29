@@ -4,7 +4,7 @@
 import CategoryChip from '../components/CategoryChip';
 import CategoryNav from '../components/CategoryNav';
 import { fetchAllCategories } from '../actions/categories';
-import { fetchUser } from '../actions/users';
+// import { fetchUser } from '../actions/users';
 import { connect } from 'react-redux';
 
 import React, { Component } from 'react';
@@ -53,4 +53,4 @@ function mapDispatchToProps(dispatch) {}
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
 
-export default connect(mapStateToProps, {fetchAllCategories, fetchUser})(CategoryDashboard);
+export default connect(mapStateToProps, {fetchAllCategories})(CategoryDashboard);
