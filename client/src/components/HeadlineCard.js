@@ -1,14 +1,28 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 
 const HeadlineCard = (props) => {
-  // const styles = {
-  //   listItem
-  // }
+  const styles = {
+    list: {
+      overflow: 'auto'
+    },
+    listItem: {
+      maxHeigt: 200,
+      // maxWidth: 600,
+      paddingTop: '3px',
+      paddingBottom: '3px',
+      paddingRight: '5px',
+      paddingLeft: '5px'
+    }
+  };
+
   return (
-    <Card>
-      <h1>{props.story.title}</h1>
-    </Card>
+    <Grid item style={styles.listItem}>
+      <Card>
+        <h3>{props.story.title}</h3>
+      </Card>
+    </Grid>
   )
 }
 

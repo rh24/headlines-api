@@ -3,6 +3,7 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import HeadlineCard from './HeadlineCard';
+import Grid from '@material-ui/core/Grid';
 
 const CategoryCard = (props) => {
   const styles = {
@@ -11,21 +12,26 @@ const CategoryCard = (props) => {
     },
     listItem: {
       maxHeigt: 200,
-      maxWidth: 600,
+      // maxWidth: 600,
       paddingTop: '3px',
       paddingBottom: '3px',
       paddingRight: '5px',
-      paddingLeft: '5px'
+      paddingLeft: '5px',
+      justify: 'center',
     }
   }
 
   const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} />);
 
   return (
-    <Card
-      style={styles.list}>
-      { headlines }
-    </Card>
+    <div style={styles.listItem}>
+      <Grid item>
+        <Card
+          style={styles.list}>
+          { headlines }
+        </Card>
+      </Grid>
+    </div>
   )
 }
 

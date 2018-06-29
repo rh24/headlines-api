@@ -6,6 +6,7 @@ import CategoryNav from '../components/CategoryNav';
 import { fetchAllCategories, fetchCategoryStories } from '../actions/categories';
 // import { fetchUser } from '../actions/users';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 import CategoryCard from '../components/CategoryCard';
 
 import React, { Component } from 'react';
@@ -63,7 +64,9 @@ class CategoryDashboard extends Component {
           categories={this.props.categories}
           handleClick={this.handleClick}
           handleDelete={this.handleDelete} />
-        { categoryCards }
+        <Grid container spacing={8}>
+          { categoryCards }
+        </Grid>
       </div>
     )
   }
