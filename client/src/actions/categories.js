@@ -13,7 +13,7 @@ export function fetchCategoryStories(categoryName) {
     return fetch(`https://newsapi.org/v2/top-headlines?category=${categoryName}&pageSize=50&country=us&apiKey=${apiKey}`)
       .then(resp => resp.json())
       .then(json => json.articles)
-      .then(stories => dispatch({ type: 'FETCH_CATEGORY_STORIES', categoryStories: stories }))
+      .then(stories => dispatch({ type: 'FETCH_CATEGORY_STORIES', category: categoryName, categoryStories: stories }))
   }
 }
 
