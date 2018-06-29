@@ -27,11 +27,13 @@ class CategoryDashboard extends Component {
   handleClick = (user, categoryName) => {
     console.log('Category:', categoryName, 'User:', user.username)
     // fetch News API category and map dispatch to props
-    const fetchCategoryStories = new Promise((user, categoryName) => {
-      this.props.fetchCategoryStories(categoryName)
-    });
+    // const fetchCategoryStories = new Promise((user, categoryName) => {
+      // this.props.fetchCategoryStories(categoryName)
+    // });
+    let promise = new Promise((resolve, reject) => resolve('Success!'));
+    promise.then((categoryName) => this.props.fetchCategoryStories(categoryName)).then((user, categoryName) => this.props.saveCategory(user, categoryName));
 
-    fetchCategoryStories.then(() => this.props.saveCategory(user, categoryName));
+    // fetchCategoryStories.then(() => this.props.saveCategory(user, categoryName));
   }
 
   handleDelete = () => {
