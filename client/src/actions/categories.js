@@ -34,7 +34,7 @@ export function saveCategory(user, categoryName) {
   // user = {id: 1, username: "rebe", stories: Array(2), categories: Array(0)}
   // needs to post to categories that belong to user
   // user_category data needs to be created in the controller
-  // debugger;
+  debugger;
   const args = {
     method: 'POST',
     mode: 'cors',
@@ -51,8 +51,10 @@ export function saveCategory(user, categoryName) {
     // I was going to post to user_categories because I've already seeded the db with all the categories my app will ever have. `/users/:id` will show which categories users have saved based on the relatinoship it has with the join model data. However, I can't access the current user's id in my user_categories controller.
     return fetch(`http://localhost:3001/users/${user.id}/user_categories`, args)
       .then(resp => resp.json())
-      // .then()
-  }
+      .then(json => {
+        debugger;
+      });
+  };
 }
 
 // fetch stories from each category from News API.
