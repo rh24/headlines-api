@@ -22,10 +22,10 @@ class CategoryDashboard extends Component {
     this.props.fetchAllCategories();
   }
 
-  handleClick = (categoryId) => {
-    console.log('Category ID:', categoryId)
+  handleClick = (categoryName) => {
+    console.log('Category:', categoryName)
     // fetch News API category and map dispatch to props
-    this.props.fetchCategoryStories(categoryId)
+    this.props.fetchCategoryStories(categoryName)
   }
 
   handleDelete = () => {

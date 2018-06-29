@@ -8,9 +8,9 @@ export function fetchSavedCategories(userId) {
   };
 }
 
-export function fetchCategoryStories(category) {
+export function fetchCategoryStories(categoryName) {
   return (dispatch) => {
-    return fetch(`https://newsapi.org/v2/top-headlines?category=${category.name}&pageSize=50&country=us&apiKey=${apiKey}`)
+    return fetch(`https://newsapi.org/v2/top-headlines?category=${categoryName}&pageSize=50&country=us&apiKey=${apiKey}`)
       .then(resp => resp.json())
       .then(json => json.articles)
       .then(stories => dispatch({ type: 'FETCH_CATEGORY_STORIES', categoryStories: stories }))
