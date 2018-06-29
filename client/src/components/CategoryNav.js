@@ -12,11 +12,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const CategoryNav = (props) => {
   // props.user carries all of the JSON data viewable in /users/:id
   // This includes saved stories and saved categories that have been posted to the Rails API.
-  
+
   const categoryChips = props.categories.map((category, idx) =>
       <CategoryChip
         user={props.user}
-        name={category.name}
+        category={category}
         key={idx}
         id={category.id}
         handleClick={props.handleClick}

@@ -30,7 +30,7 @@ export function fetchAllCategories() {
   }
 }
 
-export function saveCategory(user, categoryId) {
+export function saveCategory(user, category) {
   // e.g. arguments:
   // user = {id: 1, username: "rebe", stories: Array(2), categories: Array(0)}
   // categoryName = "1"
@@ -45,7 +45,7 @@ export function saveCategory(user, categoryId) {
     'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      category_id: categoryId,
+      category_id: category.id,
       user_id: user.id
     })
   };
@@ -54,9 +54,8 @@ export function saveCategory(user, categoryId) {
     // I was going to post to user_categories because I've already seeded the db with all the categories my app will ever have. `/users/:id` will show which categories users have saved based on the relatinoship it has with the join model data. However, I can't access the current user's id in my user_categories controller.
     return fetch(`http://localhost:3001/users/${user.id}/user_categories`, args)
       .then(resp => resp.json())
-      .then(json => {
-        debugger;
-      });
+      .catch(error => console.log(error))
+      .then(data => dispatch({ type: 'SAVE_CATEGORY', category: category }))
   };
 }
 
