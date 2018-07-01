@@ -44,17 +44,17 @@ class CategoryDashboard extends Component {
     console.log('bye');
   }
 
-  // Saves an article to user.stories
-  handleSave = (event) => {
-    event.stopPropagation();
-
-  }
-
-  // Removes a story from user.stories
-  handleRemove = (event, story = null) => {
-    event.stopPropagation();
-    this.props.removeStory(story.id, this.props.user.id);
-  }
+  // // Saves an article to user.stories
+  // handleSave = (event) => {
+  //   event.stopPropagation();
+  //
+  // }
+  //
+  // // Removes a story from user.stories
+  // handleRemove = (event, story = null) => {
+  //   event.stopPropagation();
+  //   this.props.removeStory(story.id, this.props.user.id);
+  // }
 
   render() {
     const { categories, categoryStories, user, savedCategories } = this.props;
@@ -64,7 +64,7 @@ class CategoryDashboard extends Component {
 
 
     const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
-      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} openHeadline={this.openHeadline} handleSave={(event) => this.handleSave(event)}/>
+      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} />
     });
     // Why does this not render repeats?
     // It also renders in reverse order if i start clicking from tech -> business

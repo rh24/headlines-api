@@ -24,6 +24,20 @@ class HeadlineCard extends React.Component {
     openInNewTab(story.url);
   };
 
+  // Saves an article to user.stories
+  handleSave = (event, story = null) => {
+    event.stopPropagation();
+    console.log('save me!')
+
+  }
+
+  // Removes a story from user.stories
+  handleRemove = (event, story = null) => {
+    event.stopPropagation();
+    console.log('bye story')
+    this.props.removeStory(story.id, this.props.user.id);
+  }
+
   render() {
     const { story } = this.props;
 
@@ -50,7 +64,7 @@ class HeadlineCard extends React.Component {
         <Card
           onClick={() => this.openHeadline(story)}>
           <h3>{story.title}</h3>
-          <HeartButton style={styles.heart} handleSave={(event) => this.props.handleSave(event, story)}/>
+          <HeartButton style={styles.heart} handleSave={(event) => this.handleSave(event, story)}/>
         </Card>
       </Grid>
     );
