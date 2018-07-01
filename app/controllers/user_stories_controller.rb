@@ -18,6 +18,10 @@ class UserStoriesController < ApplicationController
     render json: user_stories, status: 200
   end
 
+  def destroy
+
+  end
+
   private
 
   def user_story_params
