@@ -1,6 +1,6 @@
 import React from 'react';
 import IconButton from 'material-ui/IconButton';
-import Delete from 'mui-icons/cmdi/heart';
+import Delete from 'mui-icons/cmdi/trash';
 
 const TrashButton = (props) => {
   return (

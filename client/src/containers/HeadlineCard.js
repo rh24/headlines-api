@@ -64,12 +64,19 @@ class HeadlineCard extends React.Component {
       }
     };
 
+    const renderIcon = () => {
+      if (this.state.saved) {
+        return <TrashButton />
+      }
+    }
+
     return (
       <Grid item style={styles.listItem}>
         <Card
           onClick={() => this.openHeadline(story)}>
           <h3>{story.title}</h3>
           <HeartButton style={styles.heart} handleSave={(event) => this.handleSave(event, story)}/>
+          <TrashButton handleRemove={(event) => this.handleRemove(event, story)} />
         </Card>
       </Grid>
     );
