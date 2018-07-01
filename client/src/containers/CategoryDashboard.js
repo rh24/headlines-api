@@ -22,7 +22,8 @@ class CategoryDashboard extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.savedStories.find())
+    // const categoryStories
+    // if (this.props.savedStories.find((story, idx) => story.title === this.props.)
   }
 
   handleClick = (user, category) => {

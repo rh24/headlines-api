@@ -13,7 +13,18 @@ class HeadlineCard extends React.Component {
     }
   }
 
+  openHeadline = (story) => {
+    function openInNewTab(url) {
+      let win = window.open(url, '_blank');
+      win.focus();
+    }
+
+    openInNewTab(story.url);
+  };
+
   render() {
+    const { story } = this.props;
+
     const styles = {
       list: {
         overflow: 'auto'
@@ -32,21 +43,12 @@ class HeadlineCard extends React.Component {
       }
     };
 
-    openHeadline = (story) => {
-      function openInNewTab(url) {
-        let win = window.open(url, '_blank');
-        win.focus();
-      }
-
-      openInNewTab(story.url);
-    };
-
     return (
       <Grid item style={styles.listItem}>
         <Card
-          onClick={() => this.openHeadline(props.story)}>
-          <h3>{props.story.title}</h3>
-          <HeartButton style={styles.heart} handleSave={(event) => props.handleSave(event, props.story)}/>
+          onClick={() => this.openHeadline(story)}>
+          <h3>{story.title}</h3>
+          <HeartButton style={styles.heart} handleSave={(event) => this.props.handleSave(event, story)}/>
         </Card>
       </Grid>
     );
