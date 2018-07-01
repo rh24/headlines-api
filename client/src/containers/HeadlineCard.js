@@ -32,7 +32,7 @@ class HeadlineCard extends React.Component {
       }
     };
 
-    const openHeadline = (story) => {
+    openHeadline = (story) => {
       function openInNewTab(url) {
         let win = window.open(url, '_blank');
         win.focus();
@@ -44,7 +44,7 @@ class HeadlineCard extends React.Component {
     return (
       <Grid item style={styles.listItem}>
         <Card
-          onClick={() => openHeadline(props.story)}>
+          onClick={() => this.openHeadline(props.story)}>
           <h3>{props.story.title}</h3>
           <HeartButton style={styles.heart} handleSave={(event) => props.handleSave(event, props.story)}/>
         </Card>
