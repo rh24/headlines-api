@@ -48,7 +48,10 @@ class CategoryDashboard extends Component {
 
   render() {
     const { categories, categoryStories, user, savedCategories } = this.props;
-    // debugger;
+    // `categories` will hold all 7 category objects [{ id: 1, name: business }, ...]
+    // `categoryStories` will hold the top 20 articles from each category upon user clicking the category chip.
+    // `savedCategories` is an array that holds the categories the user clicks.
+
 
     const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
       return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} openHeadline={this.openHeadline} handleSave={(event) => this.handleSave(event)}/>
