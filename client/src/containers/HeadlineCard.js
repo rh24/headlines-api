@@ -3,6 +3,8 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import HeartButton from '../components/HeartButton';
 import TrashButton from '../components/TrashButton';
+import { saveStory, removeStory } from '../actions/stories';
+import { connect } from 'react-redux';
 
 class HeadlineCard extends React.Component {
   constructor(props) {
@@ -55,6 +57,8 @@ class HeadlineCard extends React.Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {}
+
 // justify doesn't seem to change alignment of component.
 
-export default HeadlineCard;
+export default connect(null, {saveStory, removeStory})(HeadlineCard);
