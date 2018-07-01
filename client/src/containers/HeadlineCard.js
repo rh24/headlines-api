@@ -9,10 +9,6 @@ import { connect } from 'react-redux';
 class HeadlineCard extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      saved: false,
-    }
   }
 
   openHeadline = (story) => {
@@ -30,9 +26,6 @@ class HeadlineCard extends React.Component {
     console.log('save me!')
     const { user } = this.props;
 
-    this.setState({
-      saved: true,
-    })
     this.props.saveStory(user.username, user.id, story);
   }
 
@@ -68,7 +61,7 @@ class HeadlineCard extends React.Component {
     };
 
     const renderIcon = () => {
-      if (this.state.saved) {
+      if (this.props.savedStories.find((savedStory) => savedStory.title === story.title)) {
         return (
           <TrashButton handleRemove={(event) => this.handleRemove(event, story)} />
         );
@@ -77,7 +70,7 @@ class HeadlineCard extends React.Component {
       return (
         <HeartButton style={styles.heart} handleSave={(event) => this.handleSave(event, story)} />
       );
-    }
+    };
 
     return (
       <Grid item style={styles.listItem}>
@@ -92,7 +85,7 @@ class HeadlineCard extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return ({user: state.user, savedStories: state.savedStories})
+  return ({user: state.user})
 }
 
 function mapDispatchToProps(dispatch) {}

@@ -22,7 +22,7 @@ const CategoryCard = (props) => {
       justify: 'center',
     }
   }
-  const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} user={props.user} handleSave={(event) => props.handleSave(event)}/>);
+  const headlines = props.stories.map((story, idx) => <HeadlineCard key={idx} story={story} user={props.user} handleSave={(event) => props.handleSave(event)} savedStories={props.savedStories}/>);
 
   return (
     <div style={styles.listItem}>

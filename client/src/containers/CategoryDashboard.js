@@ -4,11 +4,11 @@
 import CategoryChip from '../components/CategoryChip';
 import CategoryNav from '../components/CategoryNav';
 import { fetchAllCategories, fetchCategoryStories, saveCategory } from '../actions/categories';
-// import { fetchUser }  from '../actions/users';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import CategoryCard from '../components/CategoryCard';
 import { saveStory, removeStory } from '../actions/stories';
+import { fetchUserStories }  from '../actions/users';
 
 import React, { Component } from 'react';
 
@@ -18,12 +18,14 @@ class CategoryDashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllCategories();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // const categoryStories
-    // if (this.props.savedStories.find((story, idx) => story.title === this.props.)
+    // this.props.fetchAllCategories(this.props.user);
+    // this.props.fetchUserStories(this.props.user);
+    let promise = new Promise((resolve, reject) => resolve(this.props.user));
+    promise.then((user) => {
+      return this.props.fetchAllCategories(user)
+    }).then((actionDispatch) => {
+        this.props.fetchUserStories(actionDispatch.user)
+      });
   }
 
   handleClick = (user, category) => {
@@ -57,14 +59,14 @@ class CategoryDashboard extends Component {
   // }
 
   render() {
-    const { categories, categoryStories, user, savedCategories } = this.props;
+    const { categories, categoryStories, user, savedCategories, savedStories } = this.props;
     // `categories` will hold all 7 category objects [{ id: 1, name: business }, ...]
     // `categoryStories` will hold the top 20 articles from each category upon user clicking the category chip.
     // `savedCategories` is an array that holds the categories the user clicks.
 
 
     const categoryCards = Object.keys(categoryStories).map((categoryName, idx) => {
-      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} />
+      return <CategoryCard key={idx} name={categoryName} stories={categoryStories[`${categoryName}`]} user={user} savedStories={savedStories} />
     });
     // Why does this not render repeats?
     // It also renders in reverse order if i start clicking from tech -> business
@@ -103,4 +105,4 @@ function mapDispatchToProps(dispatch) {}
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
 
-export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories, saveCategory, saveStory, removeStory})(CategoryDashboard);
+export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories, saveCategory, saveStory, removeStory, fetchUserStories})(CategoryDashboard);

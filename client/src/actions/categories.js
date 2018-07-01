@@ -19,15 +19,12 @@ export function fetchCategoryStories(user, category) {
 
 // below will fetch to local API in order to make Material UI chips.
 
-export function fetchAllCategories() {
+export function fetchAllCategories(user) {
   return (dispatch) => {
     return fetch('http://localhost:3001/categories')
       .then(resp => resp.json())
-      .then(categories => {
-        // debugger;
-        dispatch({ type: 'FETCH_ALL_CATEGORIES', categories: categories })
-      })
-  }
+      .then(categories => dispatch({ type: 'FETCH_ALL_CATEGORIES', categories: categories, user: user}));
+  };
 }
 
 export function saveCategory(user, category) {
