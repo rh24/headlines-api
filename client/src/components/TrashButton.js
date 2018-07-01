@@ -5,8 +5,7 @@ import Delete from 'mui-icons/cmdi/trash';
 const TrashButton = (props) => {
   return (
     <IconButton>
-      <Delete>
-      </Delete>
+      <Delete onClick={(event) => props.handleRemove(event)}/>
     </IconButton>
   )
 }
