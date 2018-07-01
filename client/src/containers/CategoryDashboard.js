@@ -22,7 +22,7 @@ class CategoryDashboard extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    prevProps.categoryStories !== this.props.categoryStories;
+    if (this.props.savedStories.find())
   }
 
   handleClick = (user, category) => {
@@ -46,7 +46,7 @@ class CategoryDashboard extends Component {
   // Saves an article to user.stories
   handleSave = (event) => {
     event.stopPropagation();
-    
+
   }
 
   // Removes a story from user.stories
@@ -91,7 +91,7 @@ function openInNewTab(url) {
 
 function mapStateToProps(state) {
   // debugger;
-  return {categories: state.categories.categories, savedCategories: state.categories.savedCategories, user: state.user, categoryStories: state.categoryStories};
+  return {categories: state.categories.categories, savedCategories: state.categories.savedCategories, user: state.user, categoryStories: state.categoryStories, savedStories: state.savedStories};
 }
 
 function mapDispatchToProps(dispatch) {}
