@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import HeartButton from './HeartButton';
+import TrashButton from './TrashButton';
 
 const HeadlineCard = (props) => {
   const styles = {
@@ -36,7 +37,7 @@ const HeadlineCard = (props) => {
       <Card
         onClick={() => openHeadline(props.story)}>
         <h3>{props.story.title}</h3>
-        <HeartButton style={styles.heart} handleSave={(event) => props.handleSave(event)}/>
+        <HeartButton style={styles.heart} handleSave={(event) => props.handleSave(event, props.story)}/>
       </Card>
     </Grid>
   )

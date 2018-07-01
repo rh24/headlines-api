@@ -8,6 +8,7 @@ import { fetchAllCategories, fetchCategoryStories, saveCategory } from '../actio
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import CategoryCard from '../components/CategoryCard';
+import { saveStory, removeStory } from '../actions/stories';
 
 import React, { Component } from 'react';
 
@@ -37,13 +38,21 @@ class CategoryDashboard extends Component {
       });
   }
 
+  // Deletes a category from user.categories when a Category Chip is X'ed.
   handleDelete = () => {
     console.log('bye');
   }
 
+  // Saves an article to user.stories
   handleSave = (event) => {
     event.stopPropagation();
-    console.log('save me!')
+    
+  }
+
+  // Removes a story from user.stories
+  handleRemove = (event, story = null) => {
+    event.stopPropagation();
+    this.props.removeStory(story.id, this.props.user.id);
   }
 
   render() {
@@ -87,8 +96,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {}
 
-// When a category card is "liked", the category will be saved/ POST to the User's information. This will persist to my local API.
+// When a category chip is "liked"/clicked, the category will be saved/ POST to the User's information. This will persist to my local API.
+
+// When it is X'ed, the category will send a DELETE request to my API.
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
 
-export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories, saveCategory})(CategoryDashboard);
+// When a headline is 'hearted', the story will be persisted to my user.stories.
+// When a headline is 'trashed', the story will be DELETE'd from user.stories.
+
+export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories, saveCategory, saveStory, removeStory})(CategoryDashboard);
