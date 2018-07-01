@@ -28,7 +28,12 @@ class HeadlineCard extends React.Component {
   handleSave = (event, story = null) => {
     event.stopPropagation();
     console.log('save me!')
+    const { user } = this.props;
 
+    this.setState({
+      saved: true,
+    })
+    this.props.saveStory(user.username, user.id, story);
   }
 
   // Removes a story from user.stories
@@ -71,8 +76,15 @@ class HeadlineCard extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return ({user: state.user})
+}
+
 function mapDispatchToProps(dispatch) {}
 
 // justify doesn't seem to change alignment of component.
+
+// When a headline is 'hearted', the story will be persisted to my user.stories.
+// When a headline is 'trashed', the story will be DELETE'd from user.stories.
 
 export default connect(null, {saveStory, removeStory})(HeadlineCard);

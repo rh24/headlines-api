@@ -103,7 +103,4 @@ function mapDispatchToProps(dispatch) {}
 
 // When a category card is clicked, the dashboard will render story cards for that specific topic.
 
-// When a headline is 'hearted', the story will be persisted to my user.stories.
-// When a headline is 'trashed', the story will be DELETE'd from user.stories.
-
 export default connect(mapStateToProps, {fetchAllCategories, fetchCategoryStories, saveCategory, saveStory, removeStory})(CategoryDashboard);
