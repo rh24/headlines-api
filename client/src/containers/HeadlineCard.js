@@ -92,7 +92,7 @@ class HeadlineCard extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return ({user: state.user})
+  return ({user: state.user, savedStories: state.savedStories})
 }
 
 function mapDispatchToProps(dispatch) {}
