@@ -10,24 +10,16 @@ import Button from '@material-ui/core/Button';
 import LoggedIn from '../components/LoggedIn';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: '',
-      stories: [],
-      counter: 0,
-    }
-    // If I'm mapping all of my state to props and using redux to manage my state, is having a state object in my component redundant?
-  }
 
   componentDidMount() {
     this.props.fetchTopStories();
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   this.props.fetchTopStories();
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.username !== this.props.username) {
+      this.props.fetchTopStories();
+    }
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -107,6 +99,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {username: state.user.username, userId: state.user.id, stories: state.stories}
 }
-// I want to pass in the entire user object, but I hit errors.
+// I wanted to pass in the entire user object, but I hit errors.
 
 export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser, resetUser})(Home);

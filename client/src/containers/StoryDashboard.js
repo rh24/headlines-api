@@ -8,16 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import HoverCard from '../components/HoverCard';
 
 class StoryDashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.fetchUserStories(this.props.user);
   }
 
   render() {
-    // debugger;
     const savedStories = this.props.savedStories.map((story, idx) => <StoryCard key={idx} story={story} saved={true} user={this.props.user} />);
 
     return (
