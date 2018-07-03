@@ -33,10 +33,8 @@ class HeadlineCard extends React.Component {
   handleRemove = (event, story = null) => {
     event.stopPropagation();
     console.log('bye story')
+    debugger;
     this.props.removeStory(story.id, this.props.user.id);
-    this.setState({
-      saved: false,
-    })
   }
 
   render() {
@@ -61,9 +59,10 @@ class HeadlineCard extends React.Component {
     };
 
     const renderIcon = () => {
-      if (this.props.savedStories.find((savedStory) => savedStory.title === story.title)) {
+      let saved = this.props.savedStories.find((savedStory) => savedStory.title === story.title);
+      if (!!saved) {
         return (
-          <TrashButton handleRemove={(event) => this.handleRemove(event, story)} />
+          <TrashButton handleRemove={(event) => this.handleRemove(event, saved)} />
         );
       }
 
