@@ -21,30 +21,49 @@ const styles = {
   },
 }
 
-const HoverCard = (props) => {
-  const { urlToImage, title, url, source, description, publishedAt, author } = props.story;
-  // conditionally render save vs unsave
-  const toggleSave = () => {
-    if (props.saved) {
-      return (
-        <UnsaveButton handleRemove={(event) => props.handleRemove(event)} />
-      );
-    } else {
-      return (
-        <SaveButton story={props.story} handleSave={(event) => props.handleSave(event)} />
-      )
-    }
-  };
+class HoverCard extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <Card style={styles.card}>
-      <CardContent>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        { toggleSave() }
-      </CardContent>
-    </Card>
-  )
+    this.state = {
+      counter: 0,
+    }
+  }
+
+  upVote = (event) => {
+    event.stopPropagation();
+    this.setState({
+      counter: this.state.counter + 1,
+    })
+    // set state has a functional form. look it up :)
+  }
+
+  render() {
+    const { urlToImage, title, url, source, description, publishedAt, author } = this.props.story;
+    // conditionally render save vs unsave
+    const toggleSave = () => {
+      if (this.props.saved) {
+        return (
+          <UnsaveButton handleRemove={(event) => this.props.handleRemove(event)} />
+        );
+      } else {
+        return (
+          <SaveButton story={this.props.story} handleSave={(event) => this.props.handleSave(event)} />
+        )
+      }
+    };
+
+    return (
+      <Card style={styles.card}>
+        <CardContent>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          { toggleSave() }
+          <h1 onClick={this.upVote}>{this.state.counter}</h1>
+        </CardContent>
+      </Card>
+    );
+  }
 }
 
 

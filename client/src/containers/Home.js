@@ -99,8 +99,6 @@ class Home extends React.Component {
 // click events must be wrapped in arrow functions so that they only trigger as callbacks and don't get invoked on page load.
 
 function mapDispatchToProps(dispatch) {
-  // bindActionCreators({fetchStories: fetchStories, fetchUser: fetchUser, dispatch});
-  // why don't we need this?
 }
 
 function mapStateToProps(state) {

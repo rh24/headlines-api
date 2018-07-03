@@ -33,7 +33,6 @@ class HeadlineCard extends React.Component {
   handleRemove = (event, story = null) => {
     event.stopPropagation();
     console.log('bye story')
-    debugger;
     this.props.removeStory(story.id, this.props.user.id);
   }
 
