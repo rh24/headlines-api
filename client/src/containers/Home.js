@@ -10,6 +10,13 @@ import Button from '@material-ui/core/Button';
 import LoggedIn from '../components/LoggedIn';
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+    }
+  }
 
   componentDidMount() {
     this.props.fetchTopStories();
