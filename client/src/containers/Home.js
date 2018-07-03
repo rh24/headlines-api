@@ -99,6 +99,5 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {username: state.user.username, userId: state.user.id, stories: state.stories}
 }
-// I wanted to pass in the entire user object, but I hit errors.
 
 export default connect(mapStateToProps, {fetchTopStories, fetchUserStories, createUser, fetchUser, resetUser})(Home);
